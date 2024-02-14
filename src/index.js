@@ -1,3 +1,14 @@
+function addTaskId(arrayOfTasks) {
+
+    arrayOfTasks.forEach((currentTask, indexPosition) => {
+        
+        currentTask.id = indexPosition + 1;
+    });
+
+    return arrayOfTasks;
+}
+
+
 function createNewTask() {
 
     const taskName = prompt('Enter task name: ');
@@ -12,6 +23,7 @@ function createNewTask() {
 }
 
 
+
 function taskListManager(task) {
 
     let allTasks = [];
@@ -19,12 +31,16 @@ function taskListManager(task) {
     const appendAllTasks = (task) => {
 
         allTasks.push(task);
-    }
+        addTaskId(allTasks);
+
+    };
+
 
     const displayAllTasks = () => {
 
         console.log(allTasks);
-    }
+    };
+
 
     return {
         appendAllTasks,
@@ -44,6 +60,13 @@ function TodoManager() {
         console.log(task);
 
     }
+
+
+    const updateTask = () => {
+
+
+    }
+
 
     return {
 
