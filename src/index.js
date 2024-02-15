@@ -35,8 +35,36 @@ function editTask(arrayOfTasks) {
     while (response === 'yes');
 
     return;
+}
 
 
+function deleteTask(arrayOfTasks) {
+
+    let response = 'yes';
+
+    do {
+
+        let taskID = Number(prompt('Enter the task id: '));
+
+        const numberOfTasks = arrayOfTasks.length;
+
+        for (let i = 0; i < numberOfTasks; i++) {
+
+            if (arrayOfTasks[i]['id']=== taskID) {
+
+                arrayOfTasks.splice(i, 1);
+                break;
+            }
+        }
+
+        response = prompt('Would you like to edit another property?');
+
+    }
+    while (response === 'yes');
+
+    console.table(arrayOfTasks);
+
+    return;
 }
 
 
@@ -74,7 +102,16 @@ function taskListManager(task) {
             "taskProject": "Walking",
             "priority": "low",
             "id": 2
-        }
+        },
+
+        {
+            "taskName": "Swimming",
+            "day": "next week",
+            "taskDescription": "Swim 1km",
+            "taskProject": "Swimming",
+            "priority": "medium",
+            "id": 3
+        }        
     ];
 
     const appendAllTasks = (task) => {
@@ -105,6 +142,7 @@ function taskListManager(task) {
 function TodoManager() {
 
     const taskListMethods = taskListManager();
+    const taskList = taskListMethods.getTaskList(); 
 
     const addTask = () => {
 
@@ -112,24 +150,20 @@ function TodoManager() {
         taskListMethods.appendAllTasks(task);
         console.log(task);
 
-    }
-
-
-    const updateTask = () => {
-
-        const taskList = taskListMethods.getTaskList(); 
-        const response =  prompt('Enter "yes" to see all tasks, else "no" if you wish not to see all tasks');
-
-        (response === 'no') ? editTask(taskList) : (taskListMethods.displayAllTasks(), editTask(taskList));
-
     };
 
 
+    const removeTask = () => deleteTask(taskList); 
+
+    const updateTask = () =>  editTask(taskList);
+
+    
     return {
 
         addTask,
-        displayAllTasks: taskListMethods.displayAllTasks, 
-        updateTask   
+        displayAllTasks: taskListMethods.displayAllTasks,
+        removeTask,
+        updateTask
     };
 }
 
