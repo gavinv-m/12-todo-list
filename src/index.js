@@ -9,6 +9,37 @@ function addTaskId(arrayOfTasks) {
 }
 
 
+function editTask(arrayOfTasks) {
+
+    let response = "yes";
+    const taskID = Number(prompt('Enter the task id: '));
+
+    const propertyNames = [];
+    const objectToExtractPropNames = arrayOfTasks[0];
+
+    for (let property in objectToExtractPropNames) {
+
+        propertyNames.push(property);
+    }
+
+    do {
+        let editTaskDetail = prompt(`Which property would you like to edit? Choose from: ${propertyNames.join(", ")}`);
+        const updateDetail = prompt("What should the new value be?");
+
+        arrayOfTasks[taskID - 1][editTaskDetail] = updateDetail;
+        console.log(arrayOfTasks[taskID - 1]);
+
+        response = prompt('Would you like to edit another property?');
+
+    }
+    while (response === 'yes');
+
+    return;
+
+
+}
+
+
 function createNewTask() {
 
     const taskName = prompt('Enter task name: ');
@@ -26,7 +57,25 @@ function createNewTask() {
 
 function taskListManager(task) {
 
-    let allTasks = [];
+    let allTasks = [
+        {
+            "taskName": "Running",
+            "day": "today",
+            "taskDescription": "Run 2km",
+            "taskProject": "Running",
+            "priority": "high",
+            "id": 1
+        },
+
+        {
+            "taskName": "Walking",
+            "day": "tomorrow",
+            "taskDescription": "Walk 3km",
+            "taskProject": "Walking",
+            "priority": "low",
+            "id": 2
+        }
+    ];
 
     const appendAllTasks = (task) => {
 
@@ -36,15 +85,19 @@ function taskListManager(task) {
     };
 
 
+    const getTaskList = () => allTasks;
+
+
     const displayAllTasks = () => {
 
-        console.log(allTasks);
+        console.table(allTasks);
     };
 
 
     return {
         appendAllTasks,
-        displayAllTasks
+        displayAllTasks,
+        getTaskList
     };
 }
 
@@ -64,14 +117,19 @@ function TodoManager() {
 
     const updateTask = () => {
 
+        const taskList = taskListMethods.getTaskList(); 
+        const response =  prompt('Enter "yes" to see all tasks, else "no" if you wish not to see all tasks');
 
-    }
+        (response === 'no') ? editTask(taskList) : (taskListMethods.displayAllTasks(), editTask(taskList));
+
+    };
 
 
     return {
 
         addTask,
-        displayAllTasks: taskListMethods.displayAllTasks        
+        displayAllTasks: taskListMethods.displayAllTasks, 
+        updateTask   
     };
 }
 
