@@ -27,11 +27,11 @@ function createNewTask() {
 function addTaskToProject() {
 
     const projectManager = {};
-    
+
 
     const addToProject = (task) => {
 
-        const projectName = task.taskName;
+        const projectName = task.taskProject;
 
         if (projectManager[projectName]) projectManager[projectName].push(task);
 
@@ -42,9 +42,22 @@ function addTaskToProject() {
         }
     };
 
+
+    const getProjectNames = () => {
+
+        const projectNames = Object.keys(projectManager);
+
+        projectNames.forEach((projectName) => {
+
+            console.log(projectName);
+        });
+    };
+
+
     return {
 
         addToProject,
+        getProjectNames
     };
 
 }
@@ -164,6 +177,7 @@ function TodoManager() {
 
         addTask,
         displayAllTasks: taskListMethods.displayAllTasks,
+        getProjectNames: projectMethods.getProjectNames,
         removeTask,
         updateTask
     };
