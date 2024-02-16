@@ -9,6 +9,47 @@ function addTaskId(arrayOfTasks) {
 }
 
 
+function createNewTask() {
+
+    const taskName = prompt('Enter task name: ');
+    const day = prompt('Enter the due date in the following manner: "today", "tomorrow", "DD-MM-YYYY": ');
+    const taskDescription = prompt('Enter the description of the goal: '); 
+    const taskProject = prompt('Enter project name: '); 
+    const priority = prompt('Enter priority level: ');
+
+    const taskDetails = {taskName, day, taskDescription, taskProject, priority};
+
+    return taskDetails;
+
+}
+
+
+function addTaskToProject() {
+
+    const projectManager = {};
+    
+
+    const addToProject = (task) => {
+
+        const projectName = task.taskName;
+
+        if (projectManager[projectName]) projectManager[projectName].push(task);
+
+        else {
+
+            projectManager[projectName] = [];
+            projectManager[projectName].push(task);
+        }
+    };
+
+    return {
+
+        addToProject,
+    };
+
+}
+
+
 function editTask(arrayOfTasks) {
 
     let response = "yes";
@@ -50,7 +91,7 @@ function deleteTask(arrayOfTasks) {
 
         for (let i = 0; i < numberOfTasks; i++) {
 
-            if (arrayOfTasks[i]['id']=== taskID) {
+            if (arrayOfTasks[i]['id'] === taskID) {
 
                 arrayOfTasks.splice(i, 1);
                 break;
@@ -68,50 +109,9 @@ function deleteTask(arrayOfTasks) {
 }
 
 
-function createNewTask() {
-
-    const taskName = prompt('Enter task name: ');
-    const day = prompt('Enter the due date in the following manner: "today", "tomorrow", "DD-MM-YYYY": ');
-    const taskDescription = prompt('Enter the description of the goal: '); 
-    const taskProject = prompt('Enter project name: '); 
-    const priority = prompt('Enter priority level: ');
-
-    const taskDetails = {taskName, day, taskDescription, taskProject, priority};
-    return taskDetails;
-
-}
-
-
-
 function taskListManager(task) {
 
     let allTasks = [
-        {
-            "taskName": "Running",
-            "day": "today",
-            "taskDescription": "Run 2km",
-            "taskProject": "Running",
-            "priority": "high",
-            "id": 1
-        },
-
-        {
-            "taskName": "Walking",
-            "day": "tomorrow",
-            "taskDescription": "Walk 3km",
-            "taskProject": "Walking",
-            "priority": "low",
-            "id": 2
-        },
-
-        {
-            "taskName": "Swimming",
-            "day": "next week",
-            "taskDescription": "Swim 1km",
-            "taskProject": "Swimming",
-            "priority": "medium",
-            "id": 3
-        }        
     ];
 
     const appendAllTasks = (task) => {
@@ -142,14 +142,16 @@ function taskListManager(task) {
 function TodoManager() {
 
     const taskListMethods = taskListManager();
-    const taskList = taskListMethods.getTaskList(); 
+    const taskList = taskListMethods.getTaskList();
+
+    const projectMethods = addTaskToProject();
 
     const addTask = () => {
 
         const task = createNewTask();
         taskListMethods.appendAllTasks(task);
-        console.log(task);
-
+        
+        projectMethods.addToProject(task);
     };
 
 
@@ -157,7 +159,7 @@ function TodoManager() {
 
     const updateTask = () =>  editTask(taskList);
 
-    
+
     return {
 
         addTask,
