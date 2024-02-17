@@ -24,39 +24,68 @@ function createNewTask() {
 }
 
 
-function addTaskToProject() {
+function projectManager() {
 
-    const projectManager = {};
-
+    const projects = {};
 
     const addToProject = (task) => {
 
-        const projectName = task.taskProject;
+        const projectName = task["taskProject"];
 
-        if (projectManager[projectName]) projectManager[projectName].push(task);
+        if (projects[projectName]) projects[projectName].push(task);
 
         else {
 
-            projectManager[projectName] = [];
-            projectManager[projectName].push(task);
+            projects[projectName] = [];
+            projects[projectName].push(task);
         }
+
     };
 
 
     const getProjectNames = () => {
 
-        const projectNames = Object.keys(projectManager);
+        const projectNames = Object.keys(projects);
 
         projectNames.forEach((projectName) => {
 
             console.log(projectName);
         });
+
+        return;
+    };
+
+
+    const getProject = (project) => {
+
+        console.log('I work');
+
+        for (let projectName in projects) {
+
+            if (projectName === project) {
+
+                console.log(`${projectName}:`);
+
+                // Get the array
+                const projectTasks = projects[project];
+
+                for (let task of projectTasks) {
+
+                    console.log(task);
+                }
+
+                return;
+            }
+        }
+
+        return;
     };
 
 
     return {
 
         addToProject,
+        getProject,
         getProjectNames
     };
 
@@ -157,7 +186,7 @@ function TodoManager() {
     const taskListMethods = taskListManager();
     const taskList = taskListMethods.getTaskList();
 
-    const projectMethods = addTaskToProject();
+    const projectMethods = projectManager();
 
     const addTask = () => {
 
@@ -177,6 +206,7 @@ function TodoManager() {
 
         addTask,
         displayAllTasks: taskListMethods.displayAllTasks,
+        getProject: projectMethods.getProject,
         getProjectNames: projectMethods.getProjectNames,
         removeTask,
         updateTask
