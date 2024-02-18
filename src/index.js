@@ -13,14 +13,81 @@ function createNewTask() {
 
     const taskName = prompt('Enter task name: ');
     const day = prompt('Enter the due date in the following format: "YYYY-MM-DD": ');
-    const taskDescription = prompt('Enter the description of the goal: '); 
+    // const taskDescription = prompt('Enter the description of the goal: '); 
     const taskProject = prompt('Enter project name: '); 
-    const priority = prompt('Enter priority level: ');
+    // const priority = prompt('Enter priority level: ');
 
-    const taskDetails = {taskName, day, taskDescription, taskProject, priority};
+    // const taskDetails = {taskName, day, taskDescription, taskProject, priority};
+
+    const taskDetails = {taskName, day, taskProject};
 
     return taskDetails;
 
+}
+
+
+function dueDateCatalog() {
+
+    const dueToday = {};
+    const dueTomorrow = {};
+    const dueSomeDay = {};
+
+
+    const currentDate = new Date ();
+    const today = currentDate.toDateString();
+
+    let tomorrow = new Date ();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow = tomorrow.toDateString();
+    
+    const assignToDueDateGroup = (task) => {
+
+        let dueDate = task.day;
+        const projectName = task.taskProject;
+
+        dueDate = new Date(dueDate);
+        dueDate = dueDate.toDateString();
+
+        // Add to today
+        if (dueDate === today) {
+
+            if (dueToday[projectName]) dueToday[projectName].push(task);
+            else {
+                dueToday[projectName] = [];
+                dueToday[projectName].push(task);
+            }
+
+            console.log(dueToday);
+        }
+
+        // Add to tomorrow
+        else if (dueDate === tomorrow) {
+
+            if (dueTomorrow[projectName]) dueTomorrow[projectName].push(task);
+            else {
+                dueTomorrow[projectName] = [];
+                dueTomorrow[projectName].push(task);
+            }
+            console.log(dueTomorrow);
+        }
+
+        // Add to upcoming
+        else {
+            if (dueSomeDay[projectName]) dueSomeDay[projectName].push(task);
+            else {
+                dueSomeDay[projectName] = [];
+                dueSomeDay[projectName].push(task);
+            }
+            console.log(dueSomeDay);
+        }
+
+
+    }
+
+    
+    return {
+        assignToDueDateGroup,
+    }
 }
 
 
@@ -188,12 +255,16 @@ function TodoManager() {
 
     const projectMethods = projectManager();
 
+    const dueDateMethods = dueDateCatalog();
+
     const addTask = () => {
 
         const task = createNewTask();
         taskListMethods.appendAllTasks(task);
         
         projectMethods.addToProject(task);
+
+        dueDateMethods.assignToDueDateGroup(task);
     };
 
 
