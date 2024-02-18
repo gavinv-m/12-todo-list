@@ -12,7 +12,7 @@ function addTaskId(arrayOfTasks) {
 function createNewTask() {
 
     const taskName = prompt('Enter task name: ');
-    const day = prompt('Enter the due date in the following manner: "today", "tomorrow", "DD-MM-YYYY": ');
+    const day = prompt('Enter the due date in the following format: "YYYY-MM-DD": ');
     const taskDescription = prompt('Enter the description of the goal: '); 
     const taskProject = prompt('Enter project name: '); 
     const priority = prompt('Enter priority level: ');
