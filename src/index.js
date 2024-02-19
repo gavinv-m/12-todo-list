@@ -32,6 +32,12 @@ function dueDateCatalog() {
     const dueTomorrow = {};
     const dueSomeDay = {};
 
+    const dateGroups = {
+        dueToday,
+        dueTomorrow,
+        dueSomeDay
+    };
+
 
     const currentDate = new Date ();
     const today = currentDate.toDateString();
@@ -67,12 +73,6 @@ function dueDateCatalog() {
 
     const getTasksByDateGroup = (dueDateChosen) => {
 
-        const dateGroups = {
-            dueToday,
-            dueTomorrow,
-            dueSomeDay
-        }
-
         const selectedDay = dateGroups[dueDateChosen];
 
         for (let project in selectedDay) {
@@ -87,10 +87,31 @@ function dueDateCatalog() {
         }
     }
 
+
+    const removeTaskFromDateGroup = (taskID) => {
+        
+        outer: 
+        for (let dateGroup in dateGroups) {
+
+            for (let project in dateGroup) {
+
+                const lengthOfArrayBefore = dateGroup[project].length;
+                dateGroup[project] = deleteTask(dateGroup[project], taskID);
+
+                const lengthOfArrayAfter =  dateGroup[project].length;
+
+                if (lengthOfArrayBefore !== lengthOfArrayAfter) break outer; 
+            }
+        }
+
+        return; 
+    }
+
     
     return {
         assignToDueDateGroup,
-        getTasksByDateGroup
+        getTasksByDateGroup,
+        removeTaskFromDateGroup
     }
 }
 
@@ -155,9 +176,7 @@ function projectManager() {
         
         for (let projectName in projects) {
 
-            // Get the array
-            const projectWithTasksArray = projects[projectName];
-            deleteTask(projectWithTasksArray, taskID);
+            projects[projectName] = deleteTask(projectWithTasksArray, taskID);
         }
         return;
     }
@@ -216,7 +235,7 @@ function deleteTask(arrayOfTasks, idNumber) {
         }
     }
 
-    return;
+    return arrayOfTasks;
 }
 
 
@@ -273,8 +292,10 @@ function TodoManager() {
     const removeTask = () => {
 
         let taskID = Number(prompt('Enter the task id: '));
+
         deleteTask(taskList, taskID); 
         projectMethods.removeTaskFromProject(taskID);
+        dueDateMethods.removeTaskFromDateGroup(taskID);
     }
         
     const updateTask = () =>  editTask(taskList);
