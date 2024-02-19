@@ -39,6 +39,19 @@ function dueDateCatalog() {
     let tomorrow = new Date ();
     tomorrow.setDate(tomorrow.getDate() + 1);
     tomorrow = tomorrow.toDateString();
+
+
+    const assignToDateObject = (dateObject, projectName, task) => {
+    
+        if (dateObject[projectName]) dateObject[projectName].push(task);
+        else {
+            dateObject[projectName] = [];
+            dateObject[projectName].push(task);
+        }
+        
+        console.log(dateObject);
+    }
+    
     
     const assignToDueDateGroup = (task) => {
 
@@ -48,40 +61,9 @@ function dueDateCatalog() {
         dueDate = new Date(dueDate);
         dueDate = dueDate.toDateString();
 
-        // Add to today
-        if (dueDate === today) {
-
-            if (dueToday[projectName]) dueToday[projectName].push(task);
-            else {
-                dueToday[projectName] = [];
-                dueToday[projectName].push(task);
-            }
-
-            console.log(dueToday);
-        }
-
-        // Add to tomorrow
-        else if (dueDate === tomorrow) {
-
-            if (dueTomorrow[projectName]) dueTomorrow[projectName].push(task);
-            else {
-                dueTomorrow[projectName] = [];
-                dueTomorrow[projectName].push(task);
-            }
-            console.log(dueTomorrow);
-        }
-
-        // Add to upcoming
-        else {
-            if (dueSomeDay[projectName]) dueSomeDay[projectName].push(task);
-            else {
-                dueSomeDay[projectName] = [];
-                dueSomeDay[projectName].push(task);
-            }
-            console.log(dueSomeDay);
-        }
-
-
+        dueDate === today ? assignToDateObject(dueToday, projectName, task) : 
+            dueDate === tomorrow ? assignToDateObject(dueTomorrow, projectName, task) : 
+            assignToDateObject(dueSomeDay, projectName, task);
     }
 
     
