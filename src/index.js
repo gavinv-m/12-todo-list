@@ -129,8 +129,6 @@ function projectManager() {
 
     const getProject = (project) => {
 
-        console.log('I work');
-
         for (let projectName in projects) {
 
             if (projectName === project) {
@@ -153,11 +151,24 @@ function projectManager() {
     };
 
 
+    const removeTaskFromProject = (taskID) => {
+        
+        for (let projectName in projects) {
+
+            // Get the array
+            const projectWithTasksArray = projects[projectName];
+            deleteTask(projectWithTasksArray, taskID);
+        }
+        return;
+    }
+
+
     return {
 
         addToProject,
         getProject,
-        getProjectNames
+        getProjectNames,
+        removeTaskFromProject
     };
 
 }
@@ -192,37 +203,24 @@ function editTask(arrayOfTasks) {
 }
 
 
-function deleteTask(arrayOfTasks) {
+function deleteTask(arrayOfTasks, idNumber) {
 
-    let response = 'yes';
+    const numberOfTasks = arrayOfTasks.length;
 
-    do {
+    for (let i = 0; i < numberOfTasks; i++) {
 
-        let taskID = Number(prompt('Enter the task id: '));
+        if (arrayOfTasks[i]['id'] === idNumber) {
 
-        const numberOfTasks = arrayOfTasks.length;
-
-        for (let i = 0; i < numberOfTasks; i++) {
-
-            if (arrayOfTasks[i]['id'] === taskID) {
-
-                arrayOfTasks.splice(i, 1);
-                break;
-            }
+            arrayOfTasks.splice(i, 1);
+            break;
         }
-
-        response = prompt('Would you like to edit another property?');
-
     }
-    while (response === 'yes');
-
-    console.table(arrayOfTasks);
 
     return;
 }
 
 
-function taskListManager(task) {
+function taskListManager() {
 
     let allTasks = [
     ];
@@ -272,8 +270,13 @@ function TodoManager() {
     };
 
 
-    const removeTask = () => deleteTask(taskList); 
+    const removeTask = () => {
 
+        let taskID = Number(prompt('Enter the task id: '));
+        deleteTask(taskList, taskID); 
+        projectMethods.removeTaskFromProject(taskID);
+    }
+        
     const updateTask = () =>  editTask(taskList);
 
 
