@@ -48,11 +48,9 @@ function dueDateCatalog() {
             dateObject[projectName] = [];
             dateObject[projectName].push(task);
         }
-        
-        console.log(dateObject);
     }
     
-    
+
     const assignToDueDateGroup = (task) => {
 
         let dueDate = task.day;
@@ -66,9 +64,33 @@ function dueDateCatalog() {
             assignToDateObject(dueSomeDay, projectName, task);
     }
 
+
+    const getTasksByDateGroup = (dueDateChosen) => {
+
+        const dateGroups = {
+            dueToday,
+            dueTomorrow,
+            dueSomeDay
+        }
+
+        const selectedDay = dateGroups[dueDateChosen];
+
+        for (let project in selectedDay) {
+
+            console.log(`${project}:`);
+
+            const projectArray = selectedDay[project];
+
+            for (let task of projectArray) {
+                console.log(task);
+            }
+        }
+    }
+
     
     return {
         assignToDueDateGroup,
+        getTasksByDateGroup
     }
 }
 
@@ -261,6 +283,7 @@ function TodoManager() {
         displayAllTasks: taskListMethods.displayAllTasks,
         getProject: projectMethods.getProject,
         getProjectNames: projectMethods.getProjectNames,
+        getTasksByDateGroup: dueDateMethods.getTasksByDateGroup,
         removeTask,
         updateTask
     };
