@@ -176,7 +176,7 @@ function projectManager() {
         
         for (let projectName in projects) {
 
-            projects[projectName] = deleteTask(projectWithTasksArray, taskID);
+            projects[projectName] = deleteTask(projects[projectName], taskID);
         }
         return;
     }
