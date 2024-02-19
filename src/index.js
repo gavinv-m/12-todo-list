@@ -89,18 +89,21 @@ function dueDateCatalog() {
 
 
     const removeTaskFromDateGroup = (taskID) => {
-        
-        outer: 
-        for (let dateGroup in dateGroups) {
 
+        outer: 
+        for (let dateGroupName in dateGroups) {
+            
+            const dateGroup = dateGroups[dateGroupName];
+            
             for (let project in dateGroup) {
 
                 const lengthOfArrayBefore = dateGroup[project].length;
+                console.log(lengthOfArrayBefore);
                 dateGroup[project] = deleteTask(dateGroup[project], taskID);
 
                 const lengthOfArrayAfter =  dateGroup[project].length;
 
-                if (lengthOfArrayBefore !== lengthOfArrayAfter) break outer; 
+                if (lengthOfArrayBefore !== lengthOfArrayAfter) break outer;
             }
         }
 
