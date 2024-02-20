@@ -138,6 +138,12 @@ function projectManager() {
     };
 
 
+    const editTaskInProject () => {
+
+
+    }
+
+
     const getProjectNames = () => {
 
         const projectNames = Object.keys(projects);
@@ -196,9 +202,20 @@ function projectManager() {
 }
 
 
-function editTask(arrayOfTasks, arrayWithKeys, idNumber) {
+function editTask(arrayOfTasks, idNumber) {
 
     let response = "yes";
+
+    const propertyNames = [];
+    const objectToExtractPropNames = arrayOfTasks[0];
+
+    for (let property in objectToExtractPropNames) {
+
+        propertyNames.push(property);
+    }
+
+    // Remove id from property names
+    propertyNames.pop();
 
     do {
         let editTaskDetail = prompt(`Which property would you like to edit? Choose from: ${arrayWithKeys.join(", ")}`);
@@ -292,23 +309,12 @@ function TodoManager() {
         dueDateMethods.removeTaskFromDateGroup(taskID);
     }
         
-    
+
     const updateTask = () =>  {
-
-        const propertyNames = [];
-        const objectToExtractPropNames = taskList[0];
-
-        for (let property in objectToExtractPropNames) {
-
-            propertyNames.push(property);
-        }
-
-        // Remove id from property names
-        propertyNames.pop();
 
         const taskID = Number(prompt('Enter the task id: '));
 
-        editTask(taskList, propertyNames, taskID);
+        editTask(taskList, taskID);
     }
 
 
