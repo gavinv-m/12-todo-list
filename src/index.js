@@ -138,12 +138,6 @@ function projectManager() {
     };
 
 
-    const editTaskInProject () => {
-
-
-    }
-
-
     const getProjectNames = () => {
 
         const projectNames = Object.keys(projects);
@@ -202,34 +196,29 @@ function projectManager() {
 }
 
 
-function editTask(arrayOfTasks, idNumber) {
+function editTask(task) {
 
     let response = "yes";
 
+    // Get property names 
     const propertyNames = [];
-    const objectToExtractPropNames = arrayOfTasks[0];
+    for (let property in task) {
 
-    for (let property in objectToExtractPropNames) {
-
-        propertyNames.push(property);
+        if (property !== 'id') propertyNames.push(property);
     }
 
-    // Remove id from property names
-    propertyNames.pop();
-
     do {
-        let editTaskDetail = prompt(`Which property would you like to edit? Choose from: ${arrayWithKeys.join(", ")}`);
+        let editTaskDetail = prompt(`Which property would you like to edit? Choose from: ${propertyNames.join(", ")}`);
         const updateDetail = prompt("What should the new value be?");
 
-        arrayOfTasks[idNumber - 1][editTaskDetail] = updateDetail;
-        console.log(arrayOfTasks[idNumber - 1]);
+        task[editTaskDetail] = updateDetail;
+        console.log(task);
 
         response = prompt('Would you like to edit another property?');
-
     }
     while (response === 'yes');
 
-    return;
+    return task;
 }
 
 
@@ -263,19 +252,33 @@ function taskListManager() {
     };
 
 
-    const getTaskList = () => allTasks;
-
-
     const displayAllTasks = () => {
 
         console.table(allTasks);
     };
 
 
+    const getTaskList = () => allTasks;
+
+
+    const updateTask = (taskIDNum) => {
+
+        for (let task of allTasks) {
+
+            if (task.id === taskIDNum) {
+
+                task = editTask(task);
+                break;
+            }
+        }
+    }
+
+
     return {
         appendAllTasks,
         displayAllTasks,
-        getTaskList
+        getTaskList,
+        updateTask
     };
 }
 
@@ -314,7 +317,7 @@ function TodoManager() {
 
         const taskID = Number(prompt('Enter the task id: '));
 
-        editTask(taskList, taskID);
+        taskListMethods.updateTask(taskID);
     }
 
 
