@@ -194,7 +194,13 @@ function projectManager() {
         for (let projectName in projects) {
 
             projects[projectName] = deleteTask(projects[projectName], taskID);
+
+            // Check if array is empty
+            const lengthOfProjectArray = projects[projectName].length; 
+            if (lengthOfProjectArray === 0) delete projects[projectName];
         }
+
+        
         return;
     }
 
