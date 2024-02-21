@@ -26,11 +26,12 @@ function createNewTask() {
         dueDate = new Date(day);
     }
 
-    const taskDescription = prompt('Enter the description of the goal: '); 
+    // const taskDescription = prompt('Enter the description of the goal: '); 
     const taskProject = prompt('Enter project name: '); 
-    const priority = prompt('Enter priority level: ');
+    // const priority = prompt('Enter priority level: ');
 
-    const taskDetails = {taskName, day, taskDescription, taskProject, priority};
+    // const taskDetails = {taskName, day, taskDescription, taskProject, priority};
+    const taskDetails = {taskName, day, taskProject};
 
     return taskDetails;
 }
@@ -81,9 +82,10 @@ function dueDateCatalog() {
     }
 
 
-    const getTasksByDateGroup = (dueDateChosen) => {
+    const getTasksByDateGroup = () => {
 
-        const selectedDay = dateGroups[dueDateChosen];
+        let selectedDay = prompt(`Which date group do you wish to see ${Object.keys(dateGroups).join(", ")}`)
+        selectedDay = dateGroups[selectedDay];
 
         for (let project in selectedDay) {
 
