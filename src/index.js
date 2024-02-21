@@ -163,16 +163,18 @@ function projectManager() {
     };
 
 
-    const getProject = (project) => {
+    const getProject = () => {
+
+        let selectedProject = prompt(`Which project would you like to see ${Object.keys(projects).join(", ")}`);
 
         for (let projectName in projects) {
 
-            if (projectName === project) {
+            if (projectName === selectedProject) {
 
                 console.log(`${projectName}:`);
 
                 // Get the array
-                const projectTasks = projects[project];
+                const projectTasks = projects[selectedProject];
 
                 for (let task of projectTasks) {
 
