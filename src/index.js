@@ -128,6 +128,13 @@ function projectManager() {
 
     const projects = {};
 
+    const deleteProject = (projectName) => {
+
+        // Check if array is empty
+        const lengthOfProjectArray = projects[projectName].length;
+        if (lengthOfProjectArray === 0) delete projects[projectName];
+    }
+
     const addToProject = (task) => {
 
         const projectName = task["taskProject"];
@@ -139,7 +146,28 @@ function projectManager() {
             projects[projectName] = [];
             projects[projectName].push(task);
         }
+    };
 
+
+    const checkIfInCorrectProject = (idNumber) => {
+
+        for (let projectName in projects) {
+
+            let project = projects[projectName];
+
+            for (let task of project) {
+                
+                if (task.id === idNumber && task.taskProject !== projectName) {
+
+                    addToProject(task);
+
+                    // Delete task from previous project
+                    deleteTask(projects[projectName], idNumber);
+                    deleteProject(projectName);
+
+                }
+            }
+        }
     };
 
 
@@ -186,21 +214,19 @@ function projectManager() {
         
         for (let projectName in projects) {
 
-            projects[projectName] = deleteTask(projects[projectName], taskID);
-
-            // Check if array is empty
-            const lengthOfProjectArray = projects[projectName].length; 
-            if (lengthOfProjectArray === 0) delete projects[projectName];
+            deleteTask(projects[projectName], taskID);
+            deleteProject(projectName);
         }
 
         
         return;
-    }
+    }; 
 
 
     return {
 
         addToProject,
+        checkIfInCorrectProject,
         getProject,
         getProjectNames,
         removeTaskFromProject
@@ -338,6 +364,7 @@ function TodoManager() {
         const taskID = Number(prompt('Enter the task id: '));
 
         taskListMethods.updateTask(taskID);
+        projectMethods.checkIfInCorrectProject(taskID);
     }
 
 
