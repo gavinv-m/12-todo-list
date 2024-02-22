@@ -1,14 +1,3 @@
-function addTaskId(arrayOfTasks) {
-
-    arrayOfTasks.forEach((currentTask, indexPosition) => {
-        
-        currentTask.id = indexPosition + 1;
-    });
-
-    return arrayOfTasks;
-}
-
-
 function createNewTask() {
 
     let taskName = prompt('Enter task name: ');
@@ -268,10 +257,17 @@ function taskListManager() {
     let allTasks = [
     ];
 
-    const appendAllTasks = (task) => {
+    let allTimeTasksCreated = 0;
 
+    const addTaskId = (task) => {
+
+        allTimeTasksCreated++;
+        task.id = allTimeTasksCreated;
+    }
+
+    const appendAllTasks = (task) => {
         allTasks.push(task);
-        addTaskId(allTasks);
+        addTaskId(task);
 
     };
 
