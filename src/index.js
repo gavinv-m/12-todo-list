@@ -38,7 +38,8 @@ function TodoManager() {
 
         // let selectedSort = prompt('How would you like to sort: "date" or "project"');
 
-        projectMethods.sortProjectTasksByPriority();
+        // projectMethods.sortProjectTasksByPriority();
+        projectMethods.sortProjectTasksByDate();
 
     }
         
