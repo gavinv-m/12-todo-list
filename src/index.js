@@ -32,6 +32,15 @@ function TodoManager() {
         projectMethods.removeTaskFromProject(taskID);
         dueDateMethods.removeTaskFromDateGroup(taskID);
     }
+
+
+    const sortProjects = () => {
+
+        // let selectedSort = prompt('How would you like to sort: "date" or "project"');
+
+        projectMethods.sortProjectTasksByPriority();
+
+    }
         
 
     const updateTask = () =>  {
@@ -51,6 +60,7 @@ function TodoManager() {
         getProjectNames: projectMethods.getProjectNames,
         getTasksByDateGroup: dueDateMethods.getTasksByDateGroup,
         removeTask,
+        sortProjects,
         updateTask
     };
 }

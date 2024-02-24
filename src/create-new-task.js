@@ -17,10 +17,10 @@ function createNewTask() {
 
     // const taskDescription = prompt('Enter the description of the goal: '); 
     const taskProject = prompt('Enter project name: '); 
-    // const priority = prompt('Enter priority level: ');
+    const priority = prompt('Enter priority level: ');
 
     // const taskDetails = {taskName, day, taskDescription, taskProject, priority};
-    const taskDetails = {taskName, day, taskProject};
+    const taskDetails = {taskName, day, taskProject, priority};
 
     return taskDetails;
 }

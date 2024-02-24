@@ -1,5 +1,6 @@
 import { deleteTask } from './delete-task.js';
 
+
 function projectManager() {
 
     const projects = {};
@@ -96,7 +97,19 @@ function projectManager() {
 
         
         return;
-    }; 
+    };
+
+
+    const sortProjectTasksByPriority = () => {
+
+        const priorityOrder = { "high": 1, "low": 2, "none": 3 };
+
+        for (let project in projects) {
+
+            projects[project].sort((priorityOne, priorityTwo) => priorityOrder[priorityOne.priority] - priorityOrder[priorityTwo.priority]);
+        }
+
+    }
 
 
     return {
@@ -105,7 +118,8 @@ function projectManager() {
         checkIfInCorrectProject,
         getProject,
         getProjectNames,
-        removeTaskFromProject
+        removeTaskFromProject,
+        sortProjectTasksByPriority
     };
 
 }
