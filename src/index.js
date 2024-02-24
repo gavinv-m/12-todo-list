@@ -36,10 +36,13 @@ function TodoManager() {
 
     const sortProjects = () => {
 
-        // let selectedSort = prompt('How would you like to sort: "date" or "project"');
+        let selectedSort = prompt('How would you like to sort: "date" or "priority"');
 
-        // projectMethods.sortProjectTasksByPriority();
-        projectMethods.sortProjectTasksByDate();
+        if (selectedSort === 'priority') { 
+            projectMethods.sortProjectTasksByPriority();}
+        else {
+            projectMethods.sortProjectTasksByDate();
+        }
 
     }
         
