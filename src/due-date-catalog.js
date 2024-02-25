@@ -48,7 +48,7 @@ function dueDateCatalog() {
 
     const getTasksByDateGroup = () => {
 
-        let selectedDay = prompt(`Which date group do you wish to see ${Object.keys(dateGroups).join(", ")}`)
+        let selectedDay = prompt(`Which date group do you wish to see ${Object.keys(dateGroups).join(", ")}`);
         selectedDay = dateGroups[selectedDay];
 
         for (let project in selectedDay) {
@@ -90,12 +90,53 @@ function dueDateCatalog() {
         return; 
     }
 
+
+    const sortDueDatesTasksByPriority = () => {
+
+        const highPriority = [];
+        const lowPriority = []; 
+        const noPriority = [];
+        
+        let selectedDay = prompt(`Choose a day to sort: ${Object.keys(dateGroups).join(", ")}`);
+        selectedDay = dateGroups[selectedDay];
+
+        for (let project in selectedDay) {
+            for (let task of selectedDay[project]) {
+
+                if (task.priority === 'high') {
+                    highPriority.push(task);
+                }
+
+                else if (task.priority === 'low') {
+                    lowPriority.push(task);
+                }
+
+                else {
+                    noPriority.push(task);
+                }
+            }
+        }
+
+        const priorityGroups = {
+            highPriority,
+            lowPriority, 
+            noPriority       
+        };
+
+        for (let priority in priorityGroups) {
+
+            console.log(priority);
+            console.log(priorityGroups[priority]);
+        }
+    };
+
     
     return {
         assignToDueDateGroup,
         getTasksByDateGroup,
-        removeTaskFromDateGroup
-    }
+        removeTaskFromDateGroup,
+        sortDueDatesTasksByPriority    
+    };
 }
 
 

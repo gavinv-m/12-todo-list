@@ -31,7 +31,7 @@ function TodoManager() {
         deleteTask(taskList, taskID); 
         projectMethods.removeTaskFromProject(taskID);
         dueDateMethods.removeTaskFromDateGroup(taskID);
-    }
+    };
 
 
     const sortProjects = () => {
@@ -44,6 +44,12 @@ function TodoManager() {
             projectMethods.sortProjectTasksByDate();
         }
 
+    };
+
+
+    const sortDueDatesTasksByPriority = () => {
+
+        dueDateMethods.sortDueDatesTasksByPriority();
     }
         
 
@@ -53,7 +59,7 @@ function TodoManager() {
 
         taskListMethods.updateTask(taskID);
         projectMethods.checkIfInCorrectProject(taskID);
-    }
+    };
 
 
     return {
@@ -65,6 +71,7 @@ function TodoManager() {
         getTasksByDateGroup: dueDateMethods.getTasksByDateGroup,
         removeTask,
         sortProjects,
+        sortDueDatesTasksByPriority,
         updateTask
     };
 }
