@@ -57,7 +57,28 @@ function projectManager() {
             console.log(projectName);
         });
 
-        return;
+        return projectNames;
+    };
+
+
+    const createProject = () => {
+
+        let nameOfProject = prompt('Enter the name of the project: ');
+        let allProjects = getProjectNames();
+        let projectExists = allProjects.some(project => project === nameOfProject);
+
+        if (projectExists) {
+
+            console.log(`Project ${nameOfProject} already exists. Enter a different name: `)
+
+            while (projectExists === true) {
+                nameOfProject = prompt('Enter the name of the project: ');
+                projectExists = allProjects.some(project => project === nameOfProject);
+            }
+        }
+
+        projects[nameOfProject] = [];
+        
     };
 
 
@@ -125,6 +146,7 @@ function projectManager() {
 
         addToProject,
         checkIfInCorrectProject,
+        createProject,
         getProject,
         getProjectNames,
         removeTaskFromProject,

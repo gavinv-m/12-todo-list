@@ -23,6 +23,7 @@ function TodoManager() {
         dueDateMethods.assignToDueDateGroup(task);
     };
 
+    const createProject = () => projectMethods.createProject();
 
     const removeTask = () => {
 
@@ -66,6 +67,7 @@ function TodoManager() {
 
         addTask,
         displayAllTasks: taskListMethods.displayAllTasks,
+        createProject,
         getProject: projectMethods.getProject,
         getProjectNames: projectMethods.getProjectNames,
         getTasksByDateGroup: dueDateMethods.getTasksByDateGroup,
