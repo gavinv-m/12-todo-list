@@ -47,10 +47,10 @@ function TodoManager() {
     };
 
 
-    const sortDueDatesTasksByPriority = () => {
+    const sortDueDatesTasksByPriority = () => dueDateMethods.sortDueDatesTasksByPriority();
 
-        dueDateMethods.sortDueDatesTasksByPriority();
-    }
+
+    const sortDueSomeDayByEarliest = () => dueDateMethods.sortDueSomeDayByEarliest();
         
 
     const updateTask = () =>  {
@@ -72,6 +72,7 @@ function TodoManager() {
         removeTask,
         sortProjects,
         sortDueDatesTasksByPriority,
+        sortDueSomeDayByEarliest,
         updateTask
     };
 }
