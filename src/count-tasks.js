@@ -1,4 +1,4 @@
-function countTasks(projects, projectName, numberOfTasksInAllProjects) {
+function countTasksInProjects(projects, projectName, numberOfTasksInAllProjects) {
 
     const taskCountInProject = projects[projectName].length;
 
@@ -11,4 +11,4 @@ function countTasks(projects, projectName, numberOfTasksInAllProjects) {
     }
 }
 
-export {countTasks};
+export {countTasksInProjects};

@@ -1,5 +1,5 @@
 import { deleteTask } from './delete-task.js';
-import {countTasks} from './count-tasks'; 
+import {countTasksInProjects} from './count-tasks'; 
 
 
 function projectManager() {
@@ -22,7 +22,7 @@ function projectManager() {
         projects[projectName] = projects[projectName] || [];
         projects[projectName].push(task);
 
-        countTasks(projects, projectName, numberOfTasksInAllProjects);
+        countTasksInProjects(projects, projectName, numberOfTasksInAllProjects);
         return;
     };
 
@@ -139,8 +139,18 @@ function projectManager() {
         
         for (let projectName in projects) {
 
+            const numberOfTasks = numberOfTasksInAllProjects[projectName];
             deleteTask(projects[projectName], taskID);
-            deleteProject(projectName);
+            const numberOfTasksAfter = projects[projectName].length;
+
+            if (numberOfTasks === numberOfTasksAfter) {
+                continue;
+            }
+
+            else {
+                countTasksInProjects(projects, projectName, numberOfTasksInAllProjects);
+                deleteProject(projectName);
+            }
         }
 
         
