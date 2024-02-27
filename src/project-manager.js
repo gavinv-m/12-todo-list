@@ -41,6 +41,12 @@ function projectManager() {
 
                     // Delete task from previous project
                     deleteTask(projects[projectName], idNumber);
+
+                    // Update counters
+                    countTasksInProjects(projects, projectName, numberOfTasksInAllProjects);
+                    countTasksInProjects(projects, task.taskProject, numberOfTasksInAllProjects);
+
+                    // Check if old project now empty
                     deleteProject(projectName);
 
                 }
