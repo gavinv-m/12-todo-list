@@ -70,6 +70,7 @@ function TodoManager() {
         createProject,
         getNumberOfTasksInAllProjects: projectMethods.getNumberOfTasksInAllProjects, 
         getNumberOfTasksInProject: projectMethods.getNumberOfTasksInProject,
+        getNumberOfTasksInDateGroup: dueDateMethods.getNumberOfTasksInDateGroup,
         getProject: projectMethods.getProject,
         getProjectNames: projectMethods.getProjectNames,
         getTasksByDateGroup: dueDateMethods.getTasksByDateGroup,

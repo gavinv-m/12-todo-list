@@ -13,6 +13,11 @@ function dueDateCatalog() {
         dueSomeDay
     };
 
+    const numberOfTasksInDateGroup = {
+        dueToday: 0,
+        dueTomorrow: 0,
+        dueSomeDay: 0
+    };
 
     const currentDate = new Date ();
     const today = currentDate.toDateString();
@@ -23,12 +28,11 @@ function dueDateCatalog() {
 
 
     const assignToDateObject = (dateObject, projectName, task) => {
-    
-        if (dateObject[projectName]) dateObject[projectName].push(task);
-        else {
-            dateObject[projectName] = [];
-            dateObject[projectName].push(task);
-        }
+
+        dateObject[projectName] = dateObject[projectName] || [];
+        dateObject[projectName].push(task);
+
+        return; 
     }
     
 
@@ -40,9 +44,11 @@ function dueDateCatalog() {
         dueDate = new Date(dueDate);
         dueDate = dueDate.toDateString();
 
-        dueDate === today ? assignToDateObject(dueToday, projectName, task) : 
-            dueDate === tomorrow ? assignToDateObject(dueTomorrow, projectName, task) : 
-            assignToDateObject(dueSomeDay, projectName, task);
+        dueDate === today ? (assignToDateObject(dueToday, projectName, task), numberOfTasksInDateGroup["dueToday"]++) : 
+            dueDate === tomorrow ? (assignToDateObject(dueTomorrow, projectName, task), numberOfTasksInDateGroup["dueTomorrow"]++) : 
+            (assignToDateObject(dueSomeDay, projectName, task), numberOfTasksInDateGroup["dueSomeDay"]++);
+
+        return;
     }
 
 
@@ -61,6 +67,14 @@ function dueDateCatalog() {
                 console.log(task);
             }
         }
+    };
+
+
+    const getNumberOfTasksInDateGroup = () => {
+        
+        let selectedDay = prompt(`Which date group do you wish to see ${Object.keys(numberOfTasksInDateGroup).join(", ")}`);
+        console.log(`${selectedDay}: ${numberOfTasksInDateGroup[selectedDay]}`);
+        return;
     }
 
 
@@ -86,7 +100,6 @@ function dueDateCatalog() {
                 
             }
         }
-
         return; 
     }
 
@@ -150,6 +163,7 @@ function dueDateCatalog() {
     return {
         assignToDueDateGroup,
         getTasksByDateGroup,
+        getNumberOfTasksInDateGroup,
         removeTaskFromDateGroup,
         sortDueDatesTasksByPriority,
         sortDueSomeDayByEarliest
