@@ -4,6 +4,8 @@ import { deleteTask } from './delete-task.js';
 function projectManager() {
 
     const projects = {};
+    
+    const numberOfTasksInAllProjects = {};
 
     const deleteProject = (projectName) => {
 
@@ -16,12 +18,18 @@ function projectManager() {
 
         const projectName = task["taskProject"];
 
-        if (projects[projectName]) projects[projectName].push(task);
+        if (projects[projectName]) {
+
+            projects[projectName].push(task);
+            const taskCountInProject = projects[projectName].length;
+            numberOfTasksInAllProjects[projectName] = taskCountInProject;
+        }
 
         else {
 
             projects[projectName] = [];
             projects[projectName].push(task);
+            numberOfTasksInAllProjects[projectName] = 1;
         }
     };
 
@@ -48,19 +56,6 @@ function projectManager() {
     };
 
 
-    const getProjectNames = () => {
-
-        const projectNames = Object.keys(projects);
-
-        projectNames.forEach((projectName) => {
-
-            console.log(projectName);
-        });
-
-        return projectNames;
-    };
-
-
     const createProject = () => {
 
         let nameOfProject = prompt('Enter the name of the project: ');
@@ -80,6 +75,32 @@ function projectManager() {
         projects[nameOfProject] = [];
         
     };
+
+
+    const getNumberOfTasksInAllProjects = () => {
+
+        for (let projectName in numberOfTasksInAllProjects) {
+            
+            console.table(`${projectName}: ${numberOfTasksInAllProjects[projectName]}`);
+        }
+        return;
+    };
+
+
+    const getNumberOfTasksInProject = () => {
+        
+        let selectedProject = prompt(`Which project would you like to see ${Object.keys(projects).join(", ")}`);
+
+        for (let projectName in numberOfTasksInAllProjects) {
+            if (projectName === selectedProject) {
+
+                console.log(`${projectName}: ${numberOfTasksInAllProjects[projectName]}`);
+                return;
+            }
+
+        }
+        return;
+    }
 
 
     const getProject = () => {
@@ -105,6 +126,19 @@ function projectManager() {
         }
 
         return;
+    };
+
+
+    const getProjectNames = () => {
+
+        const projectNames = Object.keys(projects);
+
+        projectNames.forEach((projectName) => {
+
+            console.log(projectName);
+        });
+
+        return projectNames;
     };
 
 
@@ -147,6 +181,8 @@ function projectManager() {
         addToProject,
         checkIfInCorrectProject,
         createProject,
+        getNumberOfTasksInAllProjects,
+        getNumberOfTasksInProject,
         getProject,
         getProjectNames,
         removeTaskFromProject,
