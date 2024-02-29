@@ -59,6 +59,7 @@ function TodoManager() {
         const taskID = Number(prompt('Enter the task id: '));
 
         taskListMethods.updateTask(taskID);
+        dueDateMethods.checkIfInCorrectDateGroup(taskID);
         projectMethods.checkIfInCorrectProject(taskID);
     };
 

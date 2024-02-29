@@ -49,6 +49,57 @@ function dueDateCatalog() {
             (assignToDateObject(dueSomeDay, projectName, task), numberOfTasksInDateGroup["dueSomeDay"]++);
 
         return;
+    };
+
+
+    const checkIfInCorrectDateGroup = (taskID) => {
+
+        const updateTaskDate = (task) => {
+
+            let shallowCopyOfTask = { ...task };
+
+            removeTaskFromDateGroup(taskID);
+            assignToDueDateGroup(shallowCopyOfTask);
+
+        };
+
+        for (let dateGroupName in dateGroups) {
+
+            const dateGroup = dateGroups[dateGroupName];
+             
+            for (let project of Object.values(dateGroup)) {
+                for (let task of project) {
+
+                    if (task.id === taskID) {
+
+                        let dueDate = task.day;
+                        dueDate = new Date(dueDate);
+                        dueDate = dueDate.toDateString();
+
+                        if (dueDate === today && dateGroupName !== 'dueToday') {
+                            updateTaskDate(task);
+                            numberOfTasksInDateGroup[dateGroupName]--;
+                            break;
+                        }
+
+                        else if (dueDate === tomorrow && dateGroupName !== 'dueTomorrow') {
+                            updateTaskDate(task);
+                            numberOfTasksInDateGroup[dateGroupName]--;
+                            break;
+                        }
+
+                        else if ((dueDate !== today || dueDate !== tomorrow) && (dateGroupName === 'dueToday' || dateGroupName ===  'dueTomorrow')) {
+                            updateTaskDate(task);
+                            numberOfTasksInDateGroup[dateGroupName]--;
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+
+
     }
 
 
@@ -162,6 +213,7 @@ function dueDateCatalog() {
     
     return {
         assignToDueDateGroup,
+        checkIfInCorrectDateGroup,
         getTasksByDateGroup,
         getNumberOfTasksInDateGroup,
         removeTaskFromDateGroup,
