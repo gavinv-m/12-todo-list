@@ -1,0 +1,173 @@
+:root {
+    font-size: 16px;
+    --font-family: "Helvetica Neue Light",  "Nimbus Sans Regular", sans-serif, system-ui;
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    height: 100vh;
+    width: 100vw;
+
+    /* Descendants: */
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 60px 1fr;
+}
+
+
+.add-task-form {
+
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 50%;
+    width: 80%;
+
+    /* Descendants: */
+    display: grid;
+    grid-template-columns: 1fr 10fr 2fr 1fr;
+    grid-template-areas: 80%;
+
+}
+
+
+.add-task-form > span {
+    color: #aeaeae;
+    font-size: 1.2rem;
+    place-self: center;
+}
+
+
+.add-task-form > input {
+
+    border-width: 0px;
+}
+
+
+.date {
+    height: 30px;
+    width: 100%;
+
+    /* Descendants: */
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr; 
+}
+
+
+.date > h6 {
+    justify-self: center;
+}
+
+
+.due-dates {
+
+    /* Descendants: */
+    align-content: center;
+    display: grid;
+    gap: 7px;
+    
+}
+
+
+.folder-icon {
+    justify-self: center;
+}
+
+
+@font-face {
+    font-family: "Helvetica Neue Light";
+    src:
+        url(../assets/fonts/helveticaneuelight-webfont.woff2),
+        url(../assets/fonts/helveticaneuelight-webfont.woff);
+}   
+
+
+@font-face {
+    font-family: "Nimbus Sans Regular";
+    src: url(../assets/fonts/nimbussanl-reg-webfont.woff2),
+         url(../assets/fonts/nimbussanl-reg-webfont.woff); 
+}
+
+
+h2 {
+    font-size: 0.93rem;
+}
+
+
+.header {
+    background-color: #fe5a4c;
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+}
+
+
+hr {
+    border-width: 0.5px;
+    color: #f8f4f4;
+    margin: 0 auto;
+    text-align: center;
+    width: 75%;
+}
+
+
+input[type=date]::-webkit-datetime-edit {
+    color: transparent;
+    place-self: center;
+}
+
+input[type=date]:focus::-webkit-datetime-edit {
+    color: black !important;
+}
+
+
+.main-content {
+    background-color: #f8f4f4;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+
+    /* Descendants: */
+}
+
+
+
+.sidebar {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+
+    /* Descendants: */
+    display: grid;
+    grid-template-rows: 200px 1fr 50px;
+}
+
+
+.sidebar-footer {
+
+    /* Descendants: */
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr; 
+}
+
+
+.sidebar-footer > h2 {
+    color: #fe5a4c;
+}
+
+
+.task-form-container {
+    height: 100px;
+    width: 100%;
+
+    /* Descendants */
+    display: grid;
+    place-items: center;
+}

@@ -76,6 +76,7 @@ function dueDateCatalog() {
                         dueDate = new Date(dueDate);
                         dueDate = dueDate.toDateString();
 
+                        // Tech debt
                         if (dueDate === today && dateGroupName !== 'dueToday') {
                             updateTaskDate(task);
                             numberOfTasksInDateGroup[dateGroupName]--;

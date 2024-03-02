@@ -8,6 +8,66 @@
     <title>Todo List</title>
 </head>
 <body>
-    
+    <div class="header">
+        <h1>Todo List</h1>
+    </div>
+
+    <div class="sidebar">
+        <div class="due-dates">
+            
+            <div class="date">
+                <svg class="today-svg"></svg>
+                <h2>Today</h2>
+                <h6></h6>
+            </div>
+
+            <div class="date">
+                <svg class="tomorrow-svg">Tomorrow</svg>
+                <h2>Tomorrow</h2>
+                <h6></h6>
+            </div>
+
+            <div class="date">
+                <svg class="upcoming-svg"></svg>
+                <h2>Someday</h2>
+                <h6></h6>
+            </div>
+        </div>
+
+        <div class="projects">
+
+            <hr>
+
+        </div>
+
+        <div class="sidebar-footer">
+            <svg class="plus-symbol"></svg>
+            <h2>Add Project</h2>
+            <svg class="folder-icon"></svg>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <div class="task-list">
+
+            <div class="task-form-container">
+                <form class="add-task-form">
+                    <span>+</span>
+                    <input placeholder="Add a task, press 'Enter' to save" type="text">
+                    <input type="date">
+                    <span>⬤</span>
+                </form>
+            </div>
+
+            <div class="task-list-container">
+
+            </div>
+        </div>
+
+        <dialog class="edit-dialog">
+
+        </dialog>
+    </div>
 </body>
 </html>
