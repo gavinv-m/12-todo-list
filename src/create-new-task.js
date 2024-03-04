@@ -15,12 +15,11 @@ function createNewTask() {
         dueDate = new Date(day);
     }
 
-    // const taskDescription = prompt('Enter the description of the goal: '); 
+    const taskDescription = prompt('Enter the description of the goal: '); 
     const taskProject = prompt('Enter project name: '); 
     const priority = prompt('Enter priority level: ');
 
-    // const taskDetails = {taskName, day, taskDescription, taskProject, priority};
-    const taskDetails = {taskName, day, taskProject, priority};
+    const taskDetails = {taskName, day, taskDescription, taskProject, priority};
 
     return taskDetails;
 }
