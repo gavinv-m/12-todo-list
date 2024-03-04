@@ -35,9 +35,11 @@
         </div>
 
         <div class="projects">
-
             <hr>
 
+            <div class="projects-container">
+                
+            </div>
         </div>
 
         <div class="sidebar-footer">
@@ -52,12 +54,52 @@
         <div class="task-list">
 
             <div class="task-form-container">
-                <form class="add-task-form">
-                    <span>+</span>
-                    <input placeholder="Add a task, press 'Enter' to save" type="text">
-                    <input type="date">
-                    <span>⬤</span>
-                </form>
+                <button class="add-task-btn">Add Task</button>
+
+                <dialog class="create-task-dialog">
+                    <div>
+                        <h1>Create Task</h1>
+                        <hr>
+                    </div>
+
+                    <form class="add-task-form">
+
+                        <div class="select-input-group">
+                            <div class="form-item">
+                                <label for="task-name">Task Name:</label>
+                                <input type="text" name="task-name">
+                            </div>
+                            
+                            <div class="form-item">
+                                <label for="due-date">Due Date:</label>
+                                <input type="date" name="due-date">
+                            </div>
+
+                            <div class="form-item">
+                                <label for="select-project">Project:</label>
+                                <select name="select-project">
+                                </select>
+                            </div>
+
+                            <div class="form-item">
+                                <label for="select-priority">Priority:</label>
+                                <select name="select-priority"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-item">
+                            <label for="task-description">Description:</label>
+                            <textarea name="task-description">
+
+                            </textarea>
+                        </div>
+
+                        <div class="add-task-form-buttons">
+                            <button>Cancel</button>
+                            <button>Add Task</button>
+                        </div>
+                    </form>
+                </dialog>
             </div>
 
             <div class="task-list-container">

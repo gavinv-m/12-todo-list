@@ -24,33 +24,87 @@ body {
 
 
 .add-task-form {
+    padding: 0px 25px 25px 25px;
+    margin-top: 10px;
+}
 
-    background-color: white;
-    border: 1px solid white;
+
+.add-task-btn {
+    background-color: #fe5a4c;
+    border-style: none;
     border-radius: 5px;
-    height: 50%;
-    width: 80%;
+    color: #f8f4f4;
+    height: 50px;
+    width: 100px;
+}
+
+
+.add-task-btn:hover,
+.add-task-form-buttons button:hover {
+    cursor: pointer;
+}
+
+
+.add-task-form-buttons {
+    height: 35px;
+    margin-top: 15px;
 
     /* Descendants: */
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+
+.add-task-form-buttons button {
+    border-style: none;
+    border-radius: 5px;
+    width: 75px;
+}
+
+
+.add-task-form-buttons button:first-child {
+    background-color: #f8f4f4;
+    color: black;
+}
+
+
+.add-task-form-buttons button:nth-child(2) {
+    background-color: #fe5a4c;
+    color: #f8f4f4;
+}
+
+
+dialog::backdrop {
+    background-color: #aeaeae;
+    opacity: 0.75;
+}
+
+
+.create-task-dialog {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    height: 450px;
+    visibility: hidden;
+    width: 750px;
+
+    /* Positioning */
+    position: fixed;
+    top: 55%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+
+    /* Items */
     display: grid;
-    grid-template-columns: 1fr 10fr 2fr 1fr;
-    grid-template-areas: 80%;
-
+    gap: 10px;
+    grid-template-rows: 50px 1fr;
 }
 
-
-.add-task-form > span {
-    color: #aeaeae;
-    font-size: 1.2rem;
-    place-self: center;
+.create-task-dialog hr {
+    margin-top: 5px;
+    width: 100%;
 }
-
-
-.add-task-form > input {
-
-    border-width: 0px;
-}
-
 
 .date {
     height: 30px;
@@ -80,6 +134,26 @@ body {
 
 .folder-icon {
     justify-self: center;
+}
+
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-item input, 
+.form-item select {
+    
+    height: 50px;
+}
+
+
+.form-item > textarea {
+    height: 100px;
+    resize: none;
+    width: 100%;
 }
 
 
@@ -137,6 +211,27 @@ input[type=date]:focus::-webkit-datetime-edit {
     /* Descendants: */
 }
 
+option {
+    color: #aeaeae;
+}
+
+
+.projects-container {
+    height: 100%;
+    width: 100%;
+}
+
+
+.select-input-group{
+
+    margin-bottom: 25px;
+
+    /* Descendants: */
+    gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+}
 
 
 .sidebar {
@@ -163,6 +258,13 @@ input[type=date]:focus::-webkit-datetime-edit {
 }
 
 
+.task-list {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+}
+
+
 .task-form-container {
     height: 100px;
     width: 100%;
@@ -171,3 +273,5 @@ input[type=date]:focus::-webkit-datetime-edit {
     display: grid;
     place-items: center;
 }
+
+
