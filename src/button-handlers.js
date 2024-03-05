@@ -1,10 +1,12 @@
-// taskModule.js
-export function setupClickEventListeners() {
+const listenForAddTaskButton = () => {
     const addTaskButton = document.querySelector('.add-task-btn');
-    const createTaskDialog = document.querySelector('.create-task-dialog');
+    const dialog = document.querySelector('.create-task-dialog');
 
     addTaskButton.addEventListener("click", () => {
-        createTaskDialog.style.visibility = "visible";
+        dialog.showModal();
     });
-};
+}
 
+export function setupClickEventListeners() {
+    listenForAddTaskButton();
+}
