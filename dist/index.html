@@ -67,32 +67,36 @@
                             <div class="select-input-group">
                                 <div class="form-item">
                                     <label for="task-name">Task Name:</label>
-                                    <input type="text" name="task-name">
+                                    <input type="text" id="task-name" name="task-name" required>
                                 </div>
                         
                                 <div class="form-item">
                                     <label for="due-date">Due Date:</label>
-                                    <input type="date" name="due-date">
+                                    <input type="date" id="due-date" name="due-date">
                                 </div>
                                 <div class="form-item">
                                     <label for="select-project">Project:</label>
-                                    <select name="select-project">
+                                    <select name="select-project" id="select-project">
                                     </select>
                                 </div>
                                 <div class="form-item">
                                     <label for="select-priority">Priority:</label>
-                                    <select name="select-priority"></select>
+                                    <select name="select-priority" id="select-priority">
+                                        <option value="high">High Priority</option>
+                                        <option value="low">Low Priority</option>
+                                        <option value="none" selected>No Priority</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="form-item">
                                 <label for="task-description">Description:</label>
-                                <textarea name="task-description">
+                                <textarea name="task-description" id="task-description">
                                 </textarea>
                             </div>
                             <div class="add-task-form-buttons">
                                 <button class="cancel-form-sub">Cancel</button>
-                                <button>Add Task</button>
+                                <button class="submit-form-button">Add Task</button>
                             </div>
                         </form>
                     </div>

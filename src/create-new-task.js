@@ -1,27 +1,14 @@
-function createNewTask() {
+function createNewTask(taskDetails) {
 
-    let taskName = prompt('Enter task name: ');
-    while (!taskName) {
-        taskName = prompt('Enter task name: ');
-    }
+    let taskName = taskDetails["taskName"];
+    let day = taskDetails["day"];
+    const taskDescription = taskDetails["taskDescription"];
+    const taskProject = taskDetails["taskProject"];
+    const priority = taskDetails["priority"];
 
-    let day = prompt('Enter the due date in the following format: "YYYY-MM-DD": ');
-    let dueDate = new Date(day);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    const task = {taskName, day, taskDescription, taskProject, priority};
 
-    while (dueDate < today) {
-        day = prompt('Enter the due date in the following format: "YYYY-MM-DD": ');
-        dueDate = new Date(day);
-    }
-
-    const taskDescription = prompt('Enter the description of the goal: '); 
-    const taskProject = prompt('Enter project name: '); 
-    const priority = prompt('Enter priority level: ');
-
-    const taskDetails = {taskName, day, taskDescription, taskProject, priority};
-
-    return taskDetails;
+    return task;
 }
 
 export  { createNewTask };

@@ -13,13 +13,12 @@ function TodoManager() {
 
     const dueDateMethods = dueDateCatalog();
 
-    const addTask = () => {
+    const addTask = (taskDetails) => {
 
-        const task = createNewTask();
+        const task = createNewTask(taskDetails);
+        console.log(task);
         taskListMethods.appendAllTasks(task);
-        
         projectMethods.addToProject(task);
-
         dueDateMethods.assignToDueDateGroup(task);
     };
 
