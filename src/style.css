@@ -23,6 +23,11 @@ body {
 }
 
 
+#add-project {
+    cursor: pointer;
+}
+
+
 .add-task-btn {
     background-color: #fe5a4c;
     border-style: none;
@@ -253,6 +258,7 @@ option {
 
 
 .sidebar-footer {
+    
 
     /* Descendants: */
     align-items: center;

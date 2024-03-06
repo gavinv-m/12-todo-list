@@ -13,16 +13,14 @@ function TodoManager() {
 
     const dueDateMethods = dueDateCatalog();
 
-    const addTask = (taskDetails) => {
+    const addTask = (task) => {
 
-        const task = createNewTask(taskDetails);
-        console.log(task);
         taskListMethods.appendAllTasks(task);
         projectMethods.addToProject(task);
         dueDateMethods.assignToDueDateGroup(task);
     };
 
-    const createProject = () => projectMethods.createProject();
+    const createProject = (projectName) => projectMethods.createProject(projectName);
 
     const removeTask = () => {
 
@@ -83,7 +81,6 @@ function TodoManager() {
 }
 
 const taskManager = TodoManager();
-
 window.taskManager = taskManager;
 
 export { taskManager }; 

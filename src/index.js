@@ -1,13 +1,12 @@
 import  './style.css';
-// import  { taskManager } from './todo-manager.js';
 import { addImages } from './add-images.js';
-import { setupClickEventListeners } from './button-handlers'; // Replace './yourModule.js' with the path to your module file
-
+import { setupClickEventListeners } from './button-handlers';
 
 document.addEventListener("DOMContentLoaded", () => {
+    addImages();
     setupClickEventListeners();
 });
 
 
-addImages();
+
 
