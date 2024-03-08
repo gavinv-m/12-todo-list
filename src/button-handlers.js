@@ -1,4 +1,5 @@
 import  { taskManager } from './todo-manager.js';
+import { displayProject } from './display-project.js';
 
 
 class AddProjectHandler {
@@ -27,7 +28,9 @@ class AddProjectHandler {
 
             else {
                 taskManager.createProject(projectName);
+                displayProject();
                 this.dialog.close();
+                document.body.removeChild(this.dialog);
             }
         });
     }
@@ -39,14 +42,16 @@ function displayAddProjectDialog() {
     const addProjectDialog = document.createElement('dialog');
     addProjectDialog.setAttribute('id', 'add-project-dialog');
     const container = document.createElement('div');
-    container.classList.add('add-project-form');
+    container.classList.add('add-project-form-container');
 
     const form = document.createElement('form');
+    form.classList.add('add-project-form');
 
     const topRow = document.createElement('div');
     const textBox = document.createElement('input');
     textBox.setAttribute('type', 'text');
     textBox.setAttribute('id', 'project-name');
+    textBox.setAttribute('placeholder', 'Enter project name');
 
     const paragraph = document.createElement('p');
     paragraph.setAttribute('id', 'project-exists-para');
@@ -61,7 +66,8 @@ function displayAddProjectDialog() {
     cancelButton.textContent = 'Cancel';
     cancelButton.addEventListener('click', (event) => {
         event.preventDefault();
-        addProjectDialog.close(); 
+        addProjectDialog.close();
+        document.body.removeChild(addProjectDialog);
     });
     bottomRow.appendChild(cancelButton);
 
@@ -128,8 +134,7 @@ class TaskDialogHandler {
 
             const taskName = document.getElementById('task-name').value;
             const day = document.getElementById('due-date').value;
-            // const taskProject = document.getElementById('select-project').value;
-            const taskProject = 'Running';
+            const taskProject = document.getElementById('select-project').value;
             const priority = document.getElementById('select-priority').value;
             const taskDescription = document.getElementById('task-description').value;
 
@@ -160,6 +165,7 @@ export function setupClickEventListeners() {
     addProject.addEventListener('click', () => {
 
         displayAddProjectDialog();
-    })
+    });
 
+    return; 
 }

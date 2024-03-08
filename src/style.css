@@ -28,6 +28,78 @@ body {
 }
 
 
+#add-project-dialog,
+.create-task-dialog {
+    /* Positioning */
+    position: fixed;
+    top: 55%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
+
+#add-project-dialog {
+    border: 1px solid white;
+    border-radius: 10px;
+    height: 110px;
+    width: 400px;
+}
+
+
+.add-project-form > * {
+    padding-left: 5px;
+}
+
+
+.add-project-form div:first-child {
+    /* padding-right: 5px; */
+    /* Descendants */
+    display: grid;
+    align-items: center;
+}
+
+.add-project-form div:nth-child(2) {
+    /* Desendants: */
+    align-items: center;
+    display: flex;
+    gap: 15px;
+}
+
+
+.add-project-form input {
+    height: 45px;
+    width: 95%;
+}
+
+.add-project-form button {
+    border-radius: 5px;
+    border-style: none;
+    height: 35px;
+    width: 75px;
+}
+
+
+.add-project-form .submit-project {
+    background-color: #fe5a4c;
+    color: white;
+}
+
+
+.add-project-form-container,
+.add-project-form-container > form {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+
+.add-project-form-container > form {
+    /* Descendants: */
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+
 .add-task-btn {
     background-color: #fe5a4c;
     border-style: none;
@@ -81,31 +153,24 @@ body {
 }
 
 
-dialog::backdrop {
-    background-color: #aeaeae;
-    opacity: 0.75;
-}
-
-
 .create-task-dialog {
     background-color: white;
     border: 1px solid white;
     border-radius: 10px;
     height: 450px;
     width: 750px;
-
-    /* Positioning */
-    position: fixed;
-    top: 55%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-
 }
 
 
 .create-task-dialog hr {
     margin-top: 5px;
     width: 100%;
+}
+
+
+dialog::backdrop {
+    background-color: #aeaeae;
+    opacity: 0.75;
 }
 
 
@@ -118,7 +183,8 @@ dialog::backdrop {
 }
 
 
-.date {
+.date,
+.project {
     height: 30px;
     width: 100%;
 
@@ -231,6 +297,22 @@ option {
 .projects-container {
     height: 100%;
     width: 100%;
+
+    /* Descendants: */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.projects-container > .project:first-child {
+    margin-top: 10px;
+}
+
+
+#project-exists-para {
+    color: #fe5a4c;
+    font-size: 0.55rem;
 }
 
 
@@ -268,6 +350,11 @@ option {
 
 
 .sidebar-footer > h2 {
+    color: #fe5a4c;
+}
+
+
+#submit-project {
     color: #fe5a4c;
 }
 

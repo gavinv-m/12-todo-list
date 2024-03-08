@@ -11,4 +11,4 @@ function createNewTask(taskDetails) {
     return task;
 }
 
-export  { createNewTask };
+export { createNewTask };
