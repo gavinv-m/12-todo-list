@@ -71,6 +71,7 @@ body {
     width: 95%;
 }
 
+
 .add-project-form button {
     border-radius: 5px;
     border-style: none;
@@ -150,6 +151,12 @@ body {
 .add-task-form-buttons button:nth-child(2) {
     background-color: #fe5a4c;
     color: #f8f4f4;
+}
+
+
+.category {
+    font-size: 1.4rem;
+    font-weight: bold;
 }
 
 
@@ -354,6 +361,17 @@ option {
 }
 
 
+#sort-button {
+    background-color: white;
+    border-style: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 35px;
+    text-align: centers;
+    width: 35px;
+}
+
+
 #submit-project {
     color: #fe5a4c;
 }
@@ -373,6 +391,16 @@ option {
     /* Descendants */
     display: grid;
     place-items: center;
+}
+
+
+.task-list-container > div:first-child {
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    /* Descendants: */
+    display: flex;
+    justify-content: space-between;
 }
 
 
