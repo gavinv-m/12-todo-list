@@ -154,6 +154,11 @@ body {
 }
 
 
+.button-and-sort-options {
+    position: relative;
+}
+
+
 .category {
     font-size: 1.4rem;
     font-weight: bold;
@@ -204,6 +209,28 @@ dialog::backdrop {
 
 .date > h6 {
     justify-self: center;
+}
+
+
+.dropdown-content {
+    background-color: white;
+    border-radius: 5px;
+    min-width: 175px;
+    padding: 10px;
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    
+
+    /* Descendants: */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.dropdown-content > h2 {
+    cursor: pointer;
 }
 
 
