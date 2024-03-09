@@ -156,7 +156,6 @@ class TaskDialogHandler {
 
 export function setupClickEventListeners() {
     const taskDialogHandler = new TaskDialogHandler('.create-task-dialog');
-
     taskDialogHandler.listenForAddTaskButton('.add-task-btn');
     taskDialogHandler.listenForCancelFormButton('.cancel-form-sub');
     taskDialogHandler.listenForSubmitFormButton('.submit-form-button');
@@ -166,6 +165,13 @@ export function setupClickEventListeners() {
 
         displayAddProjectDialog();
     });
+
+    const sortButton = document.getElementById('sort-button');
+    const sortOptions = document.querySelector('.dropdown-content');
+    sortButton.addEventListener('click', () => {
+
+        sortOptions.style.visibility = (sortOptions.style.visibility === 'hidden') ? 'visible' : 'hidden';
+    })
 
     return; 
 }

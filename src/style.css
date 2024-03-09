@@ -220,6 +220,7 @@ dialog::backdrop {
     position: absolute;
     right: 0px;
     top: 40px;
+    visibility: hidden;
     
 
     /* Descendants: */
