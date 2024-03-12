@@ -22,13 +22,10 @@ function TodoManager() {
 
     const createProject = (projectName) => projectMethods.createProject(projectName);
 
-    const removeTask = () => {
-
-        let taskID = Number(prompt('Enter the task id: '));
-
-        deleteTask(taskList, taskID); 
-        projectMethods.removeTaskFromProject(taskID);
-        dueDateMethods.removeTaskFromDateGroup(taskID);
+    const removeTask = (id) => {
+        deleteTask(taskList, id); 
+        projectMethods.removeTaskFromProject(id);
+        dueDateMethods.removeTaskFromDateGroup(id);
     };
 
 
@@ -43,6 +40,9 @@ function TodoManager() {
         }
 
     };
+
+
+    const sendDateGroup = (dateSelected) => dueDateMethods.sendDateGroup(dateSelected);
 
 
     const sortDueDatesTasksByPriority = () => dueDateMethods.sortDueDatesTasksByPriority();
@@ -73,6 +73,7 @@ function TodoManager() {
         getProjectNames: projectMethods.getProjectNames,
         getTasksByDateGroup: dueDateMethods.getTasksByDateGroup,
         removeTask,
+        sendDateGroup,
         sortProjects,
         sortDueDatesTasksByPriority,
         sortDueSomeDayByEarliest,

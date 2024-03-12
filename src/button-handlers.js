@@ -45,7 +45,8 @@ class TaskDialogHandler {
 
             const taskName = document.getElementById('task-name').value;
             const day = document.getElementById('due-date').value;
-            const taskProject = document.getElementById('select-project').value;
+            // const taskProject = document.getElementById('select-project').value;
+            const taskProject = 'Running';
             const priority = document.getElementById('select-priority').value;
             const taskDescription = document.getElementById('task-description').value;
 

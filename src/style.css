@@ -207,6 +207,11 @@ dialog::backdrop {
 }
 
 
+.date > h2 {
+    cursor: pointer;
+}
+
+
 .date > h6 {
     justify-self: center;
 }

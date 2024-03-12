@@ -156,6 +156,9 @@ function dueDateCatalog() {
     }
 
 
+    const sendDateGroup = (dueDateName) => dateGroups[dueDateName];
+
+
     const sortDueDatesTasksByPriority = () => {
 
         const highPriority = [];
@@ -218,6 +221,7 @@ function dueDateCatalog() {
         getTasksByDateGroup,
         getNumberOfTasksInDateGroup,
         removeTaskFromDateGroup,
+        sendDateGroup,
         sortDueDatesTasksByPriority,
         sortDueSomeDayByEarliest
     };
