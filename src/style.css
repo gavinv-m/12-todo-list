@@ -159,6 +159,12 @@ body {
 }
 
 
+.button-and-sort-options:hover .dropdown-content,
+.dropdown-content:hover  {
+    visibility: visible;
+}
+
+
 .category {
     font-size: 1.4rem;
     font-weight: bold;
@@ -224,7 +230,7 @@ dialog::backdrop {
     padding: 10px;
     position: absolute;
     right: 0px;
-    top: 40px;
+    top: 37px;
     visibility: hidden;
     
 
@@ -233,6 +239,7 @@ dialog::backdrop {
     flex-direction: column;
     gap: 5px;
 }
+
 
 
 .dropdown-content > h2 {
