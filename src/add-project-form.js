@@ -1,6 +1,5 @@
 import { displayProject } from './display-project.js';
 
-
 class AddProjectHandler {
 
     constructor(dialogName){

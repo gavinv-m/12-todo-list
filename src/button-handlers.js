@@ -78,12 +78,12 @@ export function setupClickEventListeners() {
         displayAddProjectDialog();
     });
 
-    const sortButton = document.getElementById('sort-button');
-    const sortOptions = document.querySelector('.dropdown-content');
-    sortButton.addEventListener('click', () => {
+    // const sortButton = document.getElementById('sort-button');
+    // const sortOptions = document.querySelector('.dropdown-content');
+    // sortButton.addEventListener('click', () => {
 
-        sortOptions.style.visibility = (sortOptions.style.visibility === 'hidden') ? 'visible' : 'hidden';
-    })
+    //     sortOptions.style.visibility = (sortOptions.style.visibility === 'hidden') ? 'visible' : 'hidden';
+    // });
 
     return; 
 }

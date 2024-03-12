@@ -45,7 +45,7 @@ function TodoManager() {
     const sendDateGroup = (dateSelected) => dueDateMethods.sendDateGroup(dateSelected);
 
 
-    const sortDueDatesTasksByPriority = () => dueDateMethods.sortDueDatesTasksByPriority();
+    const sortDueDatesTasksByPriority = (dateSelected) => dueDateMethods.sortDueDatesTasksByPriority(dateSelected);
 
 
     const sortDueSomeDayByEarliest = () => dueDateMethods.sortDueSomeDayByEarliest();

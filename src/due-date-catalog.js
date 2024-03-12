@@ -159,14 +159,13 @@ function dueDateCatalog() {
     const sendDateGroup = (dueDateName) => dateGroups[dueDateName];
 
 
-    const sortDueDatesTasksByPriority = () => {
+    const sortDueDatesTasksByPriority = (dateGroup) => {
 
         const highPriority = [];
         const lowPriority = []; 
         const noPriority = [];
         
-        let selectedDay = prompt(`Choose a day to sort: ${Object.keys(dateGroups).join(", ")}`);
-        selectedDay = dateGroups[selectedDay];
+        const selectedDay = dateGroups[dateGroup];
 
         for (let project in selectedDay) {
             for (let task of selectedDay[project]) {
@@ -196,6 +195,8 @@ function dueDateCatalog() {
             console.log(priority);
             console.log(priorityGroups[priority]);
         }
+
+        return priorityGroups;
     };
 
     const sortDueSomeDayByEarliest = () => {
