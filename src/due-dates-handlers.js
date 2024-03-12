@@ -1,6 +1,32 @@
 import  { taskManager } from './todo-manager.js';
 
 
+function updateSortOptions(date) {
+
+    const sortOptions = document.querySelector('.dropdown-content');
+
+    while (sortOptions.firstChild) {
+        sortOptions.removeChild(sortOptions.firstChild);
+    }
+
+    const sortByPriority = document.createElement('h2');
+    sortByPriority.textContent = 'Sort By Priority';
+
+    const sortByProject = document.createElement('h2');
+    sortByProject.textContent = 'Sort By Project';
+
+    const sortByEarliest = document.createElement('h2');
+    sortByEarliest.textContent = 'Sort By Earliest';
+
+    sortOptions.appendChild(sortByPriority);
+    sortOptions.appendChild(sortByProject);
+    sortOptions.appendChild(sortByEarliest);
+
+    if (date === 'Today' || date === 'Tomorrow') sortOptions.removeChild(sortOptions.lastChild);
+
+}
+
+
 function createDeleteIcon() {
     const svgNS = "http://www.w3.org/2000/svg";
     const svgWidth = 20;
@@ -115,10 +141,13 @@ export function setUpDueDatesEventListeners()  {
     days.forEach((day) => {
         day.addEventListener('click', (event) => {
 
-            // Todo: Add heading to category
             const headingTitle = document.querySelector('.category');
             const dateSelectedName = event.target.innerHTML; 
             headingTitle.textContent = dateSelectedName;
+
+            // TODO: Sort options button
+            updateSortOptions(dateSelectedName);
+
        
             const dateSelected = event.target.id;
             displayDayTasks(dateSelected);
