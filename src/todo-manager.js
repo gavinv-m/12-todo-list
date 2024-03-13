@@ -14,7 +14,6 @@ function TodoManager() {
     const dueDateMethods = dueDateCatalog();
 
     const addTask = (task) => {
-
         taskListMethods.appendAllTasks(task);
         projectMethods.addToProject(task);
         dueDateMethods.assignToDueDateGroup(task);

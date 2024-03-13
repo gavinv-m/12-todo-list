@@ -43,12 +43,12 @@ class TaskDialogHandler {
 
             event.preventDefault(); // Don't submit form
 
-            const taskName = document.getElementById('task-name').value;
-            const day = document.getElementById('due-date').value;
-            // const taskProject = document.getElementById('select-project').value;
-            const taskProject = 'Running';
-            const priority = document.getElementById('select-priority').value;
-            const taskDescription = document.getElementById('task-description').value;
+            let taskName = document.getElementById('task-name').value;
+            let day = document.getElementById('due-date').value;
+            let taskProject = document.getElementById('select-project').value;
+            // let taskProject = 'Running';
+            let priority = document.getElementById('select-priority').value;
+            let taskDescription = document.getElementById('task-description').value;
 
             const task = {
                 taskName, 
@@ -59,6 +59,15 @@ class TaskDialogHandler {
             };
 
             taskManager.addTask(task);
+
+            // Clear the input fields
+            document.getElementById('task-name').value = '';
+            document.getElementById('due-date').value = '';
+            document.getElementById('select-project').value = '';
+            document.getElementById('select-priority').value = '';
+            document.getElementById('task-description').value = '';
+
+
             this.dialog.close();
         }); 
     }
