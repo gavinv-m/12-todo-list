@@ -46,7 +46,6 @@ class TaskDialogHandler {
             let taskName = document.getElementById('task-name').value;
             let day = document.getElementById('due-date').value;
             let taskProject = document.getElementById('select-project').value;
-            // let taskProject = 'Running';
             let priority = document.getElementById('select-priority').value;
             let taskDescription = document.getElementById('task-description').value;
 

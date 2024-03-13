@@ -7,9 +7,10 @@ class AddProjectHandler {
     }
 
 
-    listenForSubmitProject(submitProjectBtn, paragraphContainer) {
+    listenForSubmitProject(submitProjectBtn, paragraphContainer, selectProject) {
         const submitBtn = document.querySelector(submitProjectBtn);
         const paragraph = document.querySelector(paragraphContainer); 
+        const select = document.querySelector(selectProject);
         submitBtn.addEventListener('click', (event) => {
 
             event.preventDefault(); // Don't submit form
@@ -27,8 +28,14 @@ class AddProjectHandler {
             else {
                 taskManager.createProject(projectName);
                 displayProject();
+
+                // Add option to add task form 
+                const option = document.createElement('option');
+                option.textContent = projectName;
+                select.appendChild(option);
+
                 this.dialog.close();
-                document.body.removeChild(this.dialog);
+                document.body.removeChild(this.dialog); 
             }
         });
     }
@@ -82,6 +89,6 @@ export function displayAddProjectDialog() {
     addProjectDialog.showModal();
 
     const submitButtonListener = new AddProjectHandler('#add-project-dialog');
-    submitButtonListener.listenForSubmitProject('.submit-project', '#project-exists-para');
+    submitButtonListener.listenForSubmitProject('.submit-project', '#project-exists-para', '#select-project');
 
 }

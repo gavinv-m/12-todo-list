@@ -119,9 +119,9 @@ function projectManager() {
     const getProjectNames = () => {
 
         const projectNames = Object.keys(projects);
-        // projectNames.forEach((projectName) => {
-        //     console.log(projectName);
-        // });
+        projectNames.forEach((projectName) => {
+            console.log(projectName);
+        });
 
         return projectNames;
     };
