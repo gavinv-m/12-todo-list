@@ -57,7 +57,7 @@ function projectManager() {
 
 
     const createProject = (projectName) => {
-
+        // TODO: Refactor 
         let nameOfProject = projectName;
         projects[nameOfProject] = [];
         return;
@@ -90,29 +90,15 @@ function projectManager() {
     }
 
 
-    const getProject = () => {
+    const getProject = (projectName) => {
 
-        let selectedProject = prompt(`Which project would you like to see ${Object.keys(projects).join(", ")}`);
+        const projectTaskList = projects[projectName];
 
-        for (let projectName in projects) {
-
-            if (projectName === selectedProject) {
-
-                console.log(`${projectName}:`);
-
-                // Get the array
-                const projectTasks = projects[selectedProject];
-
-                for (let task of projectTasks) {
-
-                    console.log(task);
-                }
-
-                return;
-            }
-        }
-
-        return;
+		console.log(`${projectName}:`);
+        for (let task of projectTaskList) {
+			console.log(task);
+		}
+        return projectTaskList;
     };
 
 

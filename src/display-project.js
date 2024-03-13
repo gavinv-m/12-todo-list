@@ -1,4 +1,5 @@
 import { taskManager } from './todo-manager.js';
+import { setUpProjectEventListeners } from './project-handlers.js';
 
 
 function randomRgbColor() {
@@ -56,6 +57,8 @@ export function displayProject() {
     
     const numberOfTasksInProject = document.createElement('h6');
     project.appendChild(numberOfTasksInProject);
+
+    projectName.addEventListener('click', (event) => setUpProjectEventListeners(event))
 
     projectsList.appendChild(project);
 
