@@ -1,5 +1,6 @@
 import { taskManager } from "./todo-manager.js";
-import { createDeleteIcon, setUpDeleteClickEvent } from './delete-task-icon-handlers.js'
+import { createDeleteIcon, setUpDeleteClickEvent } from './delete-task-icon-handlers.js';
+import { displayDayTasks } from './display-day-tasks.js';
 
 
 function handleSortByEarliestEvent(dateGroup) {
@@ -119,9 +120,10 @@ function updateSortOptions(date) {
     sortByPriority.textContent = 'Sort By Priority';
     sortByPriority.addEventListener('click', () => handleSortByPriorityEvent(date));
     
-
     const sortByProject = document.createElement('h2');
     sortByProject.textContent = 'Sort By Project';
+    sortByProject.addEventListener('click', () => displayDayTasks(date));
+
 
     const sortByEarliest = document.createElement('h2');
     sortByEarliest.textContent = 'Sort By Earliest';
