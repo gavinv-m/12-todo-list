@@ -204,15 +204,15 @@ function dueDateCatalog() {
         const tasksInDueSomeDay = [];
 
         for (let project in dueSomeDay) {
-
             for (let task of dueSomeDay[project]) {
-
                 tasksInDueSomeDay.push(task);
             }
         }
 
         tasksInDueSomeDay.sort((taskOne, taskTwo) =>  new Date(taskOne.day) -  new Date (taskTwo.day));
         console.table(tasksInDueSomeDay);
+
+        return tasksInDueSomeDay;
     }
 
     

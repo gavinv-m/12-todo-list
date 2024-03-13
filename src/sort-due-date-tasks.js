@@ -2,6 +2,56 @@ import { taskManager } from "./todo-manager.js";
 import { createDeleteIcon, setUpDeleteClickEvent } from './delete-task-icon-handlers.js'
 
 
+function handleSortByEarliestEvent(dateGroup) {
+
+    const tasksSortedByEarliest = taskManager.sortDueSomeDayByEarliest(); // Get array
+
+    const displayContainer = document.querySelector('.tasks');
+    if (displayContainer.firstChild) displayContainer.removeChild(displayContainer.firstChild);
+
+    const innerContainer = document.createElement('div');
+
+    const earliestDateContainer = document.createElement('div');
+    earliestDateContainer.classList.add('sort-earliest');
+
+    const sortTypeHeading = document.createElement('h2');
+    sortTypeHeading.textContent = 'Sort By Earliest Date';
+    earliestDateContainer.appendChild(sortTypeHeading);
+
+    const tasksContainer = document.createElement('div');
+    tasksContainer.classList.add('earliest-sort-group');
+
+    for (let task of tasksSortedByEarliest) {
+
+        const taskContainer = document.createElement('div');
+        taskContainer.classList.add('earliest-task');
+        
+        const taskName = document.createElement('h2'); 
+        taskName.textContent = task.taskName; 
+        taskContainer.appendChild(taskName);
+
+        const projectName = document.createElement('h2');
+        projectName.textContent = task.taskProject;
+        taskContainer.appendChild(projectName);
+
+        const dueDate = document.createElement('h2');
+        dueDate.textContent = task.day; 
+        taskContainer.appendChild(dueDate);
+        
+        const deleteSVG = createDeleteIcon();
+        deleteSVG.classList.add('delete-task');
+        setUpDeleteClickEvent(deleteSVG, task.id, dateGroup);
+        taskContainer.appendChild(deleteSVG);
+
+        tasksContainer.appendChild(taskContainer);
+    }
+
+    innerContainer.appendChild(tasksContainer);
+    displayContainer.appendChild(innerContainer);
+    return;
+}
+
+
 function handleSortByPriorityEvent(dateGroup) {
 
     const tasksSortedInPriorityGroups = taskManager.sortDueDatesTasksByPriority(dateGroup);
@@ -75,12 +125,13 @@ function updateSortOptions(date) {
 
     const sortByEarliest = document.createElement('h2');
     sortByEarliest.textContent = 'Sort By Earliest';
+    sortByEarliest.addEventListener('click', () =>  handleSortByEarliestEvent(date));
 
+    sortOptions.appendChild(sortByEarliest);
     sortOptions.appendChild(sortByPriority);
     sortOptions.appendChild(sortByProject);
-    sortOptions.appendChild(sortByEarliest);
 
-    if (date === 'dueToday' || date === 'dueTomorrow') sortOptions.removeChild(sortOptions.lastChild);
+    if (date === 'dueToday' || date === 'dueTomorrow') sortOptions.removeChild(sortOptions.firstChild);
     
     return;
 }
