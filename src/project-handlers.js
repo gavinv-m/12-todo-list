@@ -1,4 +1,5 @@
-import { sortProjectTasks } from './sort-project-tasks';
+import { sortProjectTasks } from './sort-project-tasks.js';
+import { displayProjectTasks } from './display-project-tasks.js'; 
 
 
 export function setUpProjectEventListeners(event)  {
@@ -9,4 +10,5 @@ export function setUpProjectEventListeners(event)  {
     headingTitle.textContent = projectName;
 
     sortProjectTasks();
+    displayProjectTasks(projectName); 
 }

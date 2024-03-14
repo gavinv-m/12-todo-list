@@ -1,4 +1,8 @@
 
+import { displayDayTasks } from './display-day-tasks.js';
+import { displayProjectTasks } from './display-project-tasks.js';
+import { taskManager } from './todo-manager.js';
+
 function createDeleteIcon() {
     const svgNS = "http://www.w3.org/2000/svg";
     const svgWidth = 20;
@@ -46,11 +50,17 @@ function createDeleteIcon() {
 }
 
 
-function setUpDeleteClickEvent(icon, id, dateSelected) {
-
+function setUpDeleteClickEvent(icon, id, displayOption) {
+    // Display option is either a Date Group or Project Name
     icon.addEventListener('click', () => {
         taskManager.removeTask(id);
-        displayDayTasks(dateSelected);
+
+        // Check which display called, due date group or a project
+        const dateGroupNames = taskManager.getDateGroups(); // Get array
+        const isDateGroup = dateGroupNames.some((dateGroup) => dateGroup === displayOption);
+        
+        (isDateGroup) ? displayDayTasks(displayOption) : displayProjectTasks(displayOption);
+
     });
 }
 

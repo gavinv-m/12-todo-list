@@ -21,6 +21,9 @@ function TodoManager() {
 
     const createProject = (projectName) => projectMethods.createProject(projectName);
 
+    const getProject = (projectName) => projectMethods.getProject(projectName);
+
+
     const removeTask = (id) => {
         deleteTask(taskList, id); 
         projectMethods.removeTaskFromProject(id);
@@ -43,9 +46,7 @@ function TodoManager() {
 
     const sendDateGroup = (dateSelected) => dueDateMethods.sendDateGroup(dateSelected);
 
-
     const sortDueDatesTasksByPriority = (dateSelected) => dueDateMethods.sortDueDatesTasksByPriority(dateSelected);
-
 
     const sortDueSomeDayByEarliest = () => dueDateMethods.sortDueSomeDayByEarliest();
         
@@ -65,10 +66,11 @@ function TodoManager() {
         addTask,
         displayAllTasks: taskListMethods.displayAllTasks,
         createProject,
+        getDateGroups: dueDateMethods.getDateGroups,
         getNumberOfTasksInAllProjects: projectMethods.getNumberOfTasksInAllProjects, 
         getNumberOfTasksInProject: projectMethods.getNumberOfTasksInProject,
         getNumberOfTasksInDateGroup: dueDateMethods.getNumberOfTasksInDateGroup,
-        getProject: projectMethods.getProject,
+        getProject,
         getProjectNames: projectMethods.getProjectNames,
         getTasksByDateGroup: dueDateMethods.getTasksByDateGroup,
         removeTask,

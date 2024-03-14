@@ -99,9 +99,10 @@ function dueDateCatalog() {
 
             }
         }
+    };
 
 
-    }
+    const getDateGroups = () => Object.keys(dateGroups);
 
 
     const getTasksByDateGroup = () => {
@@ -219,6 +220,7 @@ function dueDateCatalog() {
     return {
         assignToDueDateGroup,
         checkIfInCorrectDateGroup,
+        getDateGroups,
         getTasksByDateGroup,
         getNumberOfTasksInDateGroup,
         removeTaskFromDateGroup,

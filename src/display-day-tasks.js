@@ -29,7 +29,7 @@ function displayDayTasks(dateSelected) {
         for (let task of date[project]) {
 
             const taskContainer = document.createElement('div');
-            taskContainer.classList.add('project-task');
+            taskContainer.classList.add('day-task');
             const taskName = document.createElement('h2');
             taskName.textContent = task.taskName;
             taskContainer.appendChild(taskName);
