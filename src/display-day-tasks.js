@@ -1,55 +1,38 @@
 import { taskManager } from './todo-manager.js';
-import { createDeleteIcon, setUpDeleteClickEvent } from './delete-task-icon-handlers.js'
+import { TaskDisplayHandler } from './task-display-handler.js';
 
-
-function displayDayTasks(dateSelected) {
+export function displayDayTasks(dateSelected) {
     // Get dueDate object
     const date = taskManager.sendDateGroup(dateSelected);
 
-    const displayContainer = document.querySelector('.tasks');
-    if (displayContainer.firstChild) displayContainer.removeChild(displayContainer.firstChild);
+    const displaDayTasks = new TaskDisplayHandler('.tasks', '.inner-container');
 
-    const innerContainer = document.createElement('div');
+    // Clear innerContainer
+    displaDayTasks.clearInnerContainer();
 
+    // Go through projects in date group 
     for (let project in date) {
 
-        if (!date[project]) return; // Check if empty
+        // Check if empty, don't display heading
+        if (!date[project]) return;
+        
+        // Make container that will hold both the heading and tasks
+        displaDayTasks.createContainerWithTasksAndHeading('project-container');
 
-        const projectContainer = document.createElement('div');
-        projectContainer.classList.add('project-container');
+        displaDayTasks.createHeading('project-heading', project);
 
-        const heading = document.createElement('div');
-        heading.classList.add('project-heading');
-        heading.textContent = project;
-        projectContainer.appendChild(heading);
-
-        const projectTasks = document.createElement('div');
-        projectTasks.classList.add('project-tasks');
+        displaDayTasks.createContainerWithTasks('project-tasks');
 
         for (let task of date[project]) {
 
-            const taskContainer = document.createElement('div');
-            taskContainer.classList.add('day-task');
-            const taskName = document.createElement('h2');
-            taskName.textContent = task.taskName;
-            taskContainer.appendChild(taskName);
-
-            const deleteSVG = createDeleteIcon();
-            deleteSVG.classList.add('delete-task');
-            setUpDeleteClickEvent(deleteSVG, task.id, dateSelected);
-
-            taskContainer.appendChild(deleteSVG);
-            projectTasks.appendChild(taskContainer);
+            displaDayTasks.createTask('day-task', task, dateSelected); 
         }
 
-        projectContainer.appendChild(projectTasks);
-
-        innerContainer.appendChild(projectContainer);
+        displaDayTasks.appendTasksToProjectContainer(); 
+        displaDayTasks.appendToInnerContainer(); 
     }
 
-    displayContainer.appendChild(innerContainer);
+    displaDayTasks.appendToDisplayContainer();
 
     return;
 }
-
-export { displayDayTasks };
