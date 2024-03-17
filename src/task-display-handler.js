@@ -3,8 +3,7 @@ import { createDeleteIcon, setUpDeleteClickEvent } from './delete-task-icon-hand
 
 export class TaskDisplayHandler {
     // TODO: Add innerContainer to HTML
-	constructor(displayContainer, innerContainer) {
-        this.displayContainer = document.querySelector(displayContainer); 
+	constructor(innerContainer) {
         this.innerContainer = document.querySelector(innerContainer);
         this.containerWithTasksAndHeading = null;
         this.heading = null;
@@ -70,9 +69,4 @@ export class TaskDisplayHandler {
     appendToInnerContainer() {
         this.innerContainer.appendChild(this.containerWithTasksAndHeading);
     }
-    
-    appendToDisplayContainer() {
-        this.displayContainer.appendChild(this.innerContainer);
-    }
-    
 }

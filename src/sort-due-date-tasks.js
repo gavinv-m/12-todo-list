@@ -5,7 +5,8 @@ import { displayDayTasks } from './display-day-tasks.js';
 
 function handleSortByEarliestEvent(dateGroup) {
 
-    const tasksSortedByEarliest = taskManager.sortDueSomeDayByEarliest(); // Get array
+    // Get array of tasks sorted by earliest due date
+    const tasksSortedByEarliest = taskManager.sortDueSomeDayByEarliest(); 
 
     const displayContainer = document.querySelector('.tasks');
     if (displayContainer.firstChild) displayContainer.removeChild(displayContainer.firstChild);

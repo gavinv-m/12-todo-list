@@ -5,7 +5,7 @@ export function displayDayTasks(dateSelected) {
     // Get dueDate object
     const date = taskManager.sendDateGroup(dateSelected);
 
-    const displaDayTasks = new TaskDisplayHandler('.tasks', '.inner-container');
+    const displaDayTasks = new TaskDisplayHandler('.inner-container');
 
     // Clear innerContainer
     displaDayTasks.clearInnerContainer();
@@ -31,8 +31,5 @@ export function displayDayTasks(dateSelected) {
         displaDayTasks.appendTasksToProjectContainer(); 
         displaDayTasks.appendToInnerContainer(); 
     }
-
-    displaDayTasks.appendToDisplayContainer();
-
     return;
 }
