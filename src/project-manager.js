@@ -57,9 +57,7 @@ function projectManager() {
 
 
     const createProject = (projectName) => {
-        // TODO: Refactor 
-        let nameOfProject = projectName;
-        projects[nameOfProject] = [];
+        projects[projectName] = [];
         return;
     };
 
