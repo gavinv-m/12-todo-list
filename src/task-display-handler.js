@@ -1,6 +1,23 @@
 import { createDeleteIcon, setUpDeleteClickEvent } from './delete-task-icon-handlers.js'
 
 
+let createTaskMixin = {
+    addTaskName() {
+        const taskName = document.createElement('h2');
+        taskName.textContent = this.currentTask.taskName;
+        this.task.appendChild(taskName);
+    }, 
+
+    addDeleteButton(dateSelected) {
+        const deleteSVG = createDeleteIcon();
+        deleteSVG.classList.add('delete-task');
+        setUpDeleteClickEvent(deleteSVG, this.currentTask.id, dateSelected);
+
+        // Append task container 
+        this.task.appendChild(deleteSVG);
+    }
+}
+
 export class TaskDisplayHandler {
     // TODO: Add innerContainer to HTML
 	constructor(innerContainer) {
@@ -9,13 +26,14 @@ export class TaskDisplayHandler {
         this.heading = null;
         this.containerWithTasks = null; 
         this.task = null;
+        this.currentTask = null;
 
     }
 
 	//TODO: Clear out anything in innerContainer
     clearInnerContainer() {
         while (this.innerContainer.firstChild) {
-            this.innerContainer.removeChild(this.innerContainer.firstChild);
+            this.innerContainer.removeChild(this.innerContainer.firstChild); 
         }
     }
 
@@ -44,20 +62,9 @@ export class TaskDisplayHandler {
         // 'task' parameter represents an object 
         this.task = document.createElement('div');
         this.task.classList.add(classList);
-        
-        const taskName = document.createElement('h2');
-        taskName.textContent = task.taskName;
-        this.task.appendChild(taskName);
-        
-        const deleteSVG = createDeleteIcon();
-        deleteSVG.classList.add('delete-task');
-        setUpDeleteClickEvent(deleteSVG, task.id, dateSelected);
-        
-        // Append task container 
-        this.task.appendChild(deleteSVG);
-        
-        // Append new task to list of tasks
-        this.containerWithTasks.appendChild(this.task); 
+
+        // Update current task object 
+        this.currentTask = task;
     }
     
     // Append the list of tasks to the container with a heading
@@ -70,3 +77,5 @@ export class TaskDisplayHandler {
         this.innerContainer.appendChild(this.containerWithTasksAndHeading);
     }
 }
+
+Object.assign(TaskDisplayHandler.prototype, createTaskMixin);

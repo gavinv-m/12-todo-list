@@ -5,10 +5,10 @@ export function displayDayTasks(dateSelected) {
     // Get dueDate object
     const date = taskManager.sendDateGroup(dateSelected);
 
-    const displaDayTasks = new TaskDisplayHandler('.inner-container');
+    const displayDayTasks = new TaskDisplayHandler('.inner-container');
 
     // Clear innerContainer
-    displaDayTasks.clearInnerContainer();
+    displayDayTasks.clearInnerContainer();
 
     // Go through projects in date group 
     for (let project in date) {
@@ -17,19 +17,23 @@ export function displayDayTasks(dateSelected) {
         if (!date[project]) return;
         
         // Make container that will hold both the heading and tasks
-        displaDayTasks.createContainerWithTasksAndHeading('project-container');
-
-        displaDayTasks.createHeading('project-heading', project);
-
-        displaDayTasks.createContainerWithTasks('project-tasks');
+        displayDayTasks.createContainerWithTasksAndHeading('project-container');
+        displayDayTasks.createHeading('project-heading', project);
+        displayDayTasks.createContainerWithTasks('project-tasks');
 
         for (let task of date[project]) {
 
-            displaDayTasks.createTask('day-task', task, dateSelected); 
+            // Create container and pass task object
+            displayDayTasks.createTask('day-task', task);
+            displayDayTasks.addTaskName();
+            displayDayTasks.addDeleteButton(dateSelected); 
+
+            // Append new task to list of tasks
+            displayDayTasks.containerWithTasks.appendChild(displayDayTasks.task);
         }
 
-        displaDayTasks.appendTasksToProjectContainer(); 
-        displaDayTasks.appendToInnerContainer(); 
+        displayDayTasks.appendTasksToProjectContainer(); 
+        displayDayTasks.appendToInnerContainer(); 
     }
     return;
 }

@@ -6,10 +6,10 @@ export function displayProjectTasks(projectName) {
 
     const projectTaskList = taskManager.getProject(projectName);
 
-    const displayContainer = document.querySelector('.tasks');
-    if (displayContainer.firstChild) displayContainer.removeChild(displayContainer.firstChild);
-
-    const innerContainer = document.createElement('div');
+    const innerContainer = document.querySelector('.inner-container'); 
+    while (innerContainer.firstChild) {
+        innerContainer.removeChild(innerContainer.firstChild);
+    }
 
     for (let task of projectTaskList) {
 
@@ -31,6 +31,4 @@ export function displayProjectTasks(projectName) {
 
         innerContainer.appendChild(taskContainer);
     }
-
-    displayContainer.appendChild(innerContainer);
 }
