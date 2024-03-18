@@ -27,6 +27,12 @@ let createTaskMixin = {
         const dueDate = document.createElement('h2');
         dueDate.textContent = this.currentTask.day;
         this.task.appendChild(dueDate);
+    }, 
+
+    addPriority() {
+        const priority = document.createElement('h2');
+        priority.textContent = this.currentTask.priority;
+        this.task.appendChild(priority);
     }
 }
 

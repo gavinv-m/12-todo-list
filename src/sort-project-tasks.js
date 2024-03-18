@@ -32,7 +32,25 @@ function handleSortByDueDate(projectName) {
 function handleSortByPriority(projectName) {
 
     const projectTasksSortedByPriority = taskManager.sortProjectTasksByPriority(projectName);
-    console.table(projectTasksSortedByPriority);
+
+    const handleSortByPriority = new TaskDisplayHandler('.inner-container');
+
+    // Clear inner Container 
+    handleSortByPriority.clearInnerContainer();
+
+    for (let task of projectTasksSortedByPriority) {
+        // For CSS try to maintain the same number of items in container as displayProjectTasks
+        // We are using the same class project-task
+        handleSortByPriority.createTask('project-task', task); 
+        handleSortByPriority.addTaskName();
+        handleSortByPriority.addPriority();
+        handleSortByPriority.addDeleteButton(projectName);
+
+        // NOTE: Different from other display functions
+        // Tasks are added directly to inner Container
+        // For styling make sure to use the selector class project-task
+        handleSortByPriority.innerContainer.appendChild(handleSortByPriority.task);
+    }
 }
 
 // Exports to project-handlers.js
