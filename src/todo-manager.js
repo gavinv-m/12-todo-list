@@ -52,7 +52,8 @@ function TodoManager() {
 
     const sortProjectTasksByDate = (projectName) => projectMethods.sortProjectTasksByDate(projectName);
         
-
+    const sortProjectTasksByPriority = (projectName) => projectMethods.sortProjectTasksByPriority(projectName); 
+    
     const updateTask = () =>  {
 
         const taskID = Number(prompt('Enter the task id: '));
@@ -79,7 +80,8 @@ function TodoManager() {
         sendDateGroup,
         sortDueDatesTasksByPriority,
         sortDueSomeDayByEarliest,
-        sortProjectTasksByDate, 
+        sortProjectTasksByDate,
+        sortProjectTasksByPriority, 
         updateTask
     };
 }

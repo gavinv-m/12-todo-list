@@ -29,6 +29,13 @@ function handleSortByDueDate(projectName) {
 }
 
 
+function handleSortByPriority(projectName) {
+
+    const projectTasksSortedByPriority = taskManager.sortProjectTasksByPriority(projectName);
+    console.table(projectTasksSortedByPriority);
+}
+
+// Exports to project-handlers.js
 export function sortProjectTasks(projectName) {
 
     const sortOptions = document.querySelector('.dropdown-content');
@@ -44,6 +51,7 @@ export function sortProjectTasks(projectName) {
 
     const sortByPriority = document.createElement('h2');
     sortByPriority.textContent = 'Sort By Task Priority';
+    sortByPriority.addEventListener('click', () => handleSortByPriority(projectName)); 
   
     sortOptions.appendChild(sortByDueDate);
     sortOptions.appendChild(sortByPriority);

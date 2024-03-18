@@ -140,15 +140,9 @@ function projectManager() {
     }       
 
 
-    const sortProjectTasksByPriority = () => {
-
+    const sortProjectTasksByPriority = (projectName) => {
         const priorityOrder = { "high": 1, "low": 2, "none": 3 };
-
-        for (let project in projects) {
-
-            projects[project].sort((priorityOne, priorityTwo) => priorityOrder[priorityOne.priority] - priorityOrder[priorityTwo.priority]);
-        }
-
+        return projects[projectName].sort((priorityOne, priorityTwo) => priorityOrder[priorityOne.priority] - priorityOrder[priorityTwo.priority]);
     }
 
 
