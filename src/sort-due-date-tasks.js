@@ -40,58 +40,49 @@ function handleSortByEarliestEvent(dateGroup) {
    return;
 }
 
-
+// Sort tasks in date group by highest priority
 function handleSortByPriorityEvent(dateGroup) {
 
+    // Get tasks sorted into priority groups
     const tasksSortedInPriorityGroups = taskManager.sortDueDatesTasksByPriority(dateGroup);
 
-    const displayContainer = document.querySelector('.tasks');
-    if (displayContainer.firstChild) displayContainer.removeChild(displayContainer.firstChild);
-
-    const innerContainer = document.createElement('div');
+    const handleSortByPriorityEvent = new TaskDisplayHandler('.inner-container');
+    
+    // Clear innerContainer 
+    handleSortByPriorityEvent.clearInnerContainer();
 
     for (let priorityGroup in tasksSortedInPriorityGroups) {
 
-        const priorityGroupContainer = document.createElement('div');
-        priorityGroupContainer.classList.add('priority-group');
+        // Check if empty, if so don't display heading 
+        if (tasksSortedInPriorityGroups[priorityGroup].length < 1) continue; 
 
-        const priorityGroupHeading = document.createElement('div');
-        priorityGroupHeading.classList.add('priority-group-heading');
-        priorityGroupHeading.textContent = 
-            (priorityGroup === 'highPriority') ? 'High Priority' : 
-            (priorityGroup === 'lowPriority') ? 'Low Priority' : 'No Priority';
+        handleSortByPriorityEvent.createContainerWithTasksAndHeading('priority-group'); 
 
-        // Don't Display Priority Group Heading With No Tasks
-        if (tasksSortedInPriorityGroups[priorityGroup].length >= 1) priorityGroupContainer.appendChild(priorityGroupHeading);
+        const heading = (priorityGroup === 'highPriority') ? 'High Priority' :
+                        (priorityGroup === 'lowPriority') ? 'Low Priority' : 'No Priority';
+        
+        handleSortByPriorityEvent.createHeading('priority-group-heading', heading); 
 
-        const priorityTasks = document.createElement('div');
-        priorityTasks.classList.add('priority-tasks');
+        handleSortByPriorityEvent.createContainerWithTasks('priority-tasks'); 
+
 
         for (let task of tasksSortedInPriorityGroups[priorityGroup]) {
-            const taskContainer = document.createElement('div');
-            taskContainer.classList.add('priority-task');
 
-            const taskName = document.createElement('h2');
-            taskName.textContent = task.taskName;
-            taskContainer.appendChild(taskName);
+            // Create container and pass task object
+            handleSortByPriorityEvent.createTask('priority-task', task); 
+            handleSortByPriorityEvent.addTaskName();
+            handleSortByPriorityEvent.addProjectName();
+            handleSortByPriorityEvent.addDeleteButton(dateGroup); 
 
-            const projectName = document.createElement('h2');
-            projectName.textContent = task.taskProject;
-            taskContainer.appendChild(projectName);
-
-            const deleteSVG = createDeleteIcon();
-            deleteSVG.classList.add('delete-task');
-            setUpDeleteClickEvent(deleteSVG, task.id, dateGroup);
-            taskContainer.appendChild(deleteSVG);
-
-            priorityTasks.appendChild(taskContainer);
+            // Append task to container with ohter tasks
+            handleSortByPriorityEvent.containerWithTasks.appendChild(handleSortByPriorityEvent.task);
         }
 
-        priorityGroupContainer.appendChild(priorityTasks); 
-        innerContainer.appendChild(priorityGroupContainer);
-    }
+        // Append container with tasks to container with heading 
+        handleSortByPriorityEvent.appendTasksToProjectContainer();
+        handleSortByPriorityEvent.appendToInnerContainer(); 
 
-    displayContainer.appendChild(innerContainer);
+    };
     return;
 }
 
