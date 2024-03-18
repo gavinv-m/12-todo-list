@@ -1,5 +1,4 @@
 import { taskManager } from "./todo-manager.js";
-import { createDeleteIcon, setUpDeleteClickEvent } from './delete-task-icon-handlers.js';
 import { displayDayTasks } from './display-day-tasks.js';
 import { TaskDisplayHandler } from './task-display-handler.js';
 
@@ -87,7 +86,7 @@ function handleSortByPriorityEvent(dateGroup) {
 }
 
 
-function updateSortOptions(date) {
+export function updateSortOptions(date) {
 
     const sortOptions = document.querySelector('.dropdown-content');
 
@@ -117,5 +116,4 @@ function updateSortOptions(date) {
     return;
 }
 
-
-export { updateSortOptions };
+// Exports to due-dates-handlers.js

@@ -2,7 +2,7 @@ import { taskManager } from './todo-manager.js';
 import { createDeleteIcon, setUpDeleteClickEvent } from './delete-task-icon-handlers.js';
 import { TaskDisplayHandler } from './task-display-handler.js';
 
-
+// Exports to project-handlers.js
 export function displayProjectTasks(projectName) {
     // Get array of the tasks in a project
     const projectTaskList = taskManager.getProject(projectName);
@@ -25,3 +25,4 @@ export function displayProjectTasks(projectName) {
         displayProjectTasks.innerContainer.appendChild(displayProjectTasks.task);
     }
 }
+

@@ -136,13 +136,10 @@ function projectManager() {
     };
 
 
-    const sortProjectTasksByDate = () => {
-
-        for (let project in projects) {
-
-            projects[project].sort((taskOne, taskTwo) => new Date(taskOne.day) -  new Date (taskTwo.day));
-        }
-    }
+    const sortProjectTasksByDate = (projectName) => {
+        return projects[projectName].sort((taskOne, taskTwo) => new Date(taskOne.day) -  new Date (taskTwo.day));
+         
+    }       
 
 
     const sortProjectTasksByPriority = () => {
