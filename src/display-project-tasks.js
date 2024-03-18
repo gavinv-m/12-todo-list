@@ -1,34 +1,27 @@
 import { taskManager } from './todo-manager.js';
 import { createDeleteIcon, setUpDeleteClickEvent } from './delete-task-icon-handlers.js';
+import { TaskDisplayHandler } from './task-display-handler.js';
 
 
 export function displayProjectTasks(projectName) {
-
+    // Get array of the tasks in a project
     const projectTaskList = taskManager.getProject(projectName);
 
-    const innerContainer = document.querySelector('.inner-container'); 
-    while (innerContainer.firstChild) {
-        innerContainer.removeChild(innerContainer.firstChild);
-    }
+    const displayProjectTasks = new TaskDisplayHandler('.inner-container');
+
+    // Clear inner container
+    displayProjectTasks.clearInnerContainer();
 
     for (let task of projectTaskList) {
 
-        const taskContainer = document.createElement('div');
-        taskContainer.classList.add('project-task');
-        
-        const taskName = document.createElement('h2'); 
-        taskName.textContent = task.taskName; 
-        taskContainer.appendChild(taskName);
+        displayProjectTasks.createTask('project-task', task); 
+        displayProjectTasks.addTaskName(); 
+        displayProjectTasks.addDueDate(); 
+        displayProjectTasks.addDeleteButton(projectName);
 
-        const dueDate = document.createElement('h2');
-        dueDate.textContent = task.day; 
-        taskContainer.appendChild(dueDate);
-        
-        const deleteSVG = createDeleteIcon();
-        deleteSVG.classList.add('delete-task');
-        setUpDeleteClickEvent(deleteSVG, task.id, projectName);
-        taskContainer.appendChild(deleteSVG);
-
-        innerContainer.appendChild(taskContainer);
+        // NOTE: Different from other display functions
+        // Tasks are added directly to inner Container
+        // For styling make sure to use the selector class project-task
+        displayProjectTasks.innerContainer.appendChild(displayProjectTasks.task);
     }
 }
