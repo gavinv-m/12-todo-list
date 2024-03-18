@@ -32,7 +32,7 @@ export function displayDayTasks(dateSelected) {
             displayDayTasks.containerWithTasks.appendChild(displayDayTasks.task);
         }
 
-        displayDayTasks.appendTasksToProjectContainer(); 
+        displayDayTasks.appendTasksToGroupContainer(); 
         displayDayTasks.appendToInnerContainer(); 
     }
     return;

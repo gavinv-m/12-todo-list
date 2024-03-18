@@ -33,7 +33,7 @@ function handleSortByEarliestEvent(dateGroup) {
    }
 
    // Apend the container with tasks to the container with the sort by heading
-   handleSortByEarliestEvent.appendTasksToProjectContainer();
+   handleSortByEarliestEvent.appendTasksToGroupContainer();
 
    // Append to inner container 
    handleSortByEarliestEvent.appendToInnerContainer(); 
@@ -79,7 +79,7 @@ function handleSortByPriorityEvent(dateGroup) {
         }
 
         // Append container with tasks to container with heading 
-        handleSortByPriorityEvent.appendTasksToProjectContainer();
+        handleSortByPriorityEvent.appendTasksToGroupContainer();
         handleSortByPriorityEvent.appendToInnerContainer(); 
 
     };

@@ -80,7 +80,7 @@ export class TaskDisplayHandler {
     }
     
     // Append the list of tasks to the container with a heading
-    appendTasksToProjectContainer() {
+    appendTasksToGroupContainer() {
         this.containerWithTasksAndHeading.appendChild(this.containerWithTasks); 
     }
     
