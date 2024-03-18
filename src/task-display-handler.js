@@ -15,6 +15,18 @@ let createTaskMixin = {
 
         // Append task container 
         this.task.appendChild(deleteSVG);
+    }, 
+
+    addProjectName() {
+        const projectName = document.createElement('h2');
+        projectName.textContent = this.currentTask.taskProject;
+        this.task.appendChild(projectName);
+    }, 
+
+    addDueDate() {
+        const dueDate = document.createElement('h2');
+        dueDate.textContent = this.currentTask.day;
+        this.task.appendChild(dueDate);
     }
 }
 
@@ -25,8 +37,8 @@ export class TaskDisplayHandler {
         this.containerWithTasksAndHeading = null;
         this.heading = null;
         this.containerWithTasks = null; 
-        this.task = null;
-        this.currentTask = null;
+        this.task = null; // Represents task container, with details, will be made in this class
+        this.currentTask = null; // Represents task object passed from task manager
 
     }
 
@@ -58,7 +70,7 @@ export class TaskDisplayHandler {
     }
     
     
-    createTask(classList, task, dateSelected) {
+    createTask(classList, task) {
         // 'task' parameter represents an object 
         this.task = document.createElement('div');
         this.task.classList.add(classList);

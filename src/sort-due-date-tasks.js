@@ -1,56 +1,43 @@
 import { taskManager } from "./todo-manager.js";
 import { createDeleteIcon, setUpDeleteClickEvent } from './delete-task-icon-handlers.js';
 import { displayDayTasks } from './display-day-tasks.js';
+import { TaskDisplayHandler } from './task-display-handler.js';
 
-
+// Sort tasks Due Someday by earliest
 function handleSortByEarliestEvent(dateGroup) {
 
     // Get array of tasks sorted by earliest due date
     const tasksSortedByEarliest = taskManager.sortDueSomeDayByEarliest(); 
 
-    const displayContainer = document.querySelector('.tasks');
-    if (displayContainer.firstChild) displayContainer.removeChild(displayContainer.firstChild);
+   const handleSortByEarliestEvent = new TaskDisplayHandler('.inner-container');
+   
+   // Clear innerContainer
+   handleSortByEarliestEvent.clearInnerContainer();
 
-    const innerContainer = document.createElement('div');
+   handleSortByEarliestEvent.createContainerWithTasksAndHeading('sort-earliest'); 
 
-    const earliestDateContainer = document.createElement('div');
-    earliestDateContainer.classList.add('sort-earliest');
+   handleSortByEarliestEvent.createHeading('sort-type', 'Sort By Earliest Date'); 
 
-    const sortTypeHeading = document.createElement('h2');
-    sortTypeHeading.textContent = 'Sort By Earliest Date';
-    earliestDateContainer.appendChild(sortTypeHeading);
+   handleSortByEarliestEvent.createContainerWithTasks('earliest-sort-group');
 
-    const tasksContainer = document.createElement('div');
-    tasksContainer.classList.add('earliest-sort-group');
+   for (let task of tasksSortedByEarliest) {
 
-    for (let task of tasksSortedByEarliest) {
+        handleSortByEarliestEvent.createTask('earliest-task', task); 
+        handleSortByEarliestEvent.addTaskName();
+        handleSortByEarliestEvent.addProjectName();
+        handleSortByEarliestEvent.addDueDate();
+        handleSortByEarliestEvent.addDeleteButton(dateGroup);
 
-        const taskContainer = document.createElement('div');
-        taskContainer.classList.add('earliest-task');
-        
-        const taskName = document.createElement('h2'); 
-        taskName.textContent = task.taskName; 
-        taskContainer.appendChild(taskName);
+        // Append to container with tasks
+        handleSortByEarliestEvent.containerWithTasks.appendChild(handleSortByEarliestEvent.task); 
+   }
 
-        const projectName = document.createElement('h2');
-        projectName.textContent = task.taskProject;
-        taskContainer.appendChild(projectName);
+   // Apend the container with tasks to the container with the sort by heading
+   handleSortByEarliestEvent.appendTasksToProjectContainer();
 
-        const dueDate = document.createElement('h2');
-        dueDate.textContent = task.day; 
-        taskContainer.appendChild(dueDate);
-        
-        const deleteSVG = createDeleteIcon();
-        deleteSVG.classList.add('delete-task');
-        setUpDeleteClickEvent(deleteSVG, task.id, dateGroup);
-        taskContainer.appendChild(deleteSVG);
-
-        tasksContainer.appendChild(taskContainer);
-    }
-
-    innerContainer.appendChild(tasksContainer);
-    displayContainer.appendChild(innerContainer);
-    return;
+   // Append to inner container 
+   handleSortByEarliestEvent.appendToInnerContainer(); 
+   return;
 }
 
 
