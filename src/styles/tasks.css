@@ -1,0 +1,62 @@
+.day-task {
+    height: 45px;
+    width: 100%;
+}
+
+.day-task {
+    align-items: center;
+    background-color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    justify-content: flex-start;
+    /* Descendants: */
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.inner-container {
+    /* background-color: aqua; */
+    height: 85%;
+    overflow: scroll;
+    width: 85%;
+}
+
+
+.inner-container > .project-container:not(:first-child) {
+    margin-top: 10px;
+}
+
+
+.project-container {
+    /* Descendants: */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.project-heading {
+    font-weight: bold;
+}
+
+
+.project-tasks {
+    /* Descendants: */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.tasks {
+    
+    /* Descendants */
+    display: grid;
+    place-items: center;
+}
+
+
+::-webkit-scrollbar {
+    display: none;
+}

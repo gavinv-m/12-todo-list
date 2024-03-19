@@ -203,6 +203,7 @@ dialog::backdrop {
 
 .date,
 .project {
+    cursor: pointer;
     height: 30px;
     width: 100%;
 
