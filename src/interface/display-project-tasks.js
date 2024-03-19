@@ -1,5 +1,4 @@
-import { taskManager } from './todo-manager.js';
-import { createDeleteIcon, setUpDeleteClickEvent } from './delete-task-icon-handlers.js';
+import  { taskManager } from '../application-logic/todo-manager.js';
 import { TaskDisplayHandler } from './task-display-handler.js';
 
 // Exports to project-handlers.js

@@ -1,4 +1,4 @@
-import { taskManager } from './todo-manager.js';
+import  { taskManager } from '../application-logic/todo-manager.js';
 import { setUpProjectEventListeners } from './project-handlers.js';
 
 
@@ -37,7 +37,7 @@ function createCircle() {
     return svg;
 }
 
-
+// Export to add-project-form.js
 export function displayProject() {
 
     const arrayOfProjectNames = taskManager.getProjectNames();

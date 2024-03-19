@@ -1,4 +1,5 @@
-function deleteTask(arrayOfTasks, idNumber) {
+// Exports to project-manager.js and due-date-catalog.js
+export function deleteTask(arrayOfTasks, idNumber) {
 
     const numberOfTasks = arrayOfTasks.length;
 
@@ -15,4 +16,3 @@ function deleteTask(arrayOfTasks, idNumber) {
 }
 
 
-export { deleteTask };

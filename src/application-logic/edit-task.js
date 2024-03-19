@@ -1,4 +1,5 @@
-function editTask(task) {
+// Exports to task-list-manager.js
+export function editTask(task) {
 
     let response = "yes";
 
@@ -22,6 +23,3 @@ function editTask(task) {
 
     return task;
 }
-
-
-export { editTask };

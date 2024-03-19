@@ -51,4 +51,5 @@ function taskListManager() {
     };
 }
 
+// Export to todo-manager.js
 export { taskListManager };

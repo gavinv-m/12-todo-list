@@ -1,4 +1,4 @@
-import { taskManager } from './todo-manager.js';
+import  { taskManager } from '../application-logic/todo-manager.js';
 import { TaskDisplayHandler } from './task-display-handler.js';
 
 export function displayDayTasks(dateSelected) {

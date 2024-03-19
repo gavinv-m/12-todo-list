@@ -1,4 +1,6 @@
-function createNewTask(taskDetails) {
+// Exports to todo-manager.js when working on application only
+// Redundant
+export function createNewTask(taskDetails) {
 
     let taskName = taskDetails["taskName"];
     let day = taskDetails["day"];
@@ -10,5 +12,3 @@ function createNewTask(taskDetails) {
 
     return task;
 }
-
-export { createNewTask };

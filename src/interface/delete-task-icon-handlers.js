@@ -1,7 +1,6 @@
-
 import { displayDayTasks } from './display-day-tasks.js';
 import { displayProjectTasks } from './display-project-tasks.js';
-import { taskManager } from './todo-manager.js';
+import  { taskManager } from '../application-logic/todo-manager.js';
 
 function createDeleteIcon() {
     const svgNS = "http://www.w3.org/2000/svg";

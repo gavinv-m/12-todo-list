@@ -1,5 +1,5 @@
 import { deleteTask } from './delete-task.js';
-import {countTasksInProjects} from './count-tasks'; 
+import { countTasksInProjects } from './count-tasks';
 
 
 function projectManager() {
@@ -162,5 +162,5 @@ function projectManager() {
 
 }
 
-
+// Export to todo-manager.js
 export { projectManager };

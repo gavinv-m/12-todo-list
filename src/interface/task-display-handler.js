@@ -36,6 +36,7 @@ let createTaskMixin = {
     }
 }
 
+// Exports to: 
 export class TaskDisplayHandler {
     // TODO: Add innerContainer to HTML
 	constructor(innerContainer) {

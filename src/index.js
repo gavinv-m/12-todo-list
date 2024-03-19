@@ -1,7 +1,7 @@
-import  './style.css';
-import { addImages } from './add-images.js';
-import { setupClickEventListeners } from './button-handlers';
-import { setUpDueDatesEventListeners } from './due-dates-handlers.js';
+import './styles/style.css';
+import { addImages } from './interface/add-images.js';
+import { setupClickEventListeners } from './interface/button-handlers.js';
+import { setUpDueDatesEventListeners } from './interface/due-dates-handlers.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     addImages();

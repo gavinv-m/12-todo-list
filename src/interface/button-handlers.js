@@ -1,4 +1,4 @@
-import  { taskManager } from './todo-manager.js';
+import  { taskManager } from '../application-logic/todo-manager.js';
 import { displayAddProjectDialog } from './add-project-form.js'
 
 class TaskDialogHandler {

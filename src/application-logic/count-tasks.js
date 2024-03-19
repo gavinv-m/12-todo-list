@@ -1,4 +1,5 @@
-function countTasksInProjects(projects, projectName, numberOfTasksInAllProjects) {
+// Exports to project-manager.js
+export function countTasksInProjects(projects, projectName, numberOfTasksInAllProjects) {
 
     const taskCountInProject = projects[projectName].length;
 
@@ -10,7 +11,3 @@ function countTasksInProjects(projects, projectName, numberOfTasksInAllProjects)
         numberOfTasksInAllProjects[projectName] = taskCountInProject;
     }
 }
-
-
-
-export {countTasksInProjects};

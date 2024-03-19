@@ -1,4 +1,4 @@
-import { taskManager } from "./todo-manager.js";
+import { taskManager } from '../application-logic/todo-manager.js';
 import { displayDayTasks } from './display-day-tasks.js';
 import { TaskDisplayHandler } from './task-display-handler.js';
 
@@ -85,7 +85,7 @@ function handleSortByPriorityEvent(dateGroup) {
     return;
 }
 
-
+// Exports to due-dates-handlers.js
 export function updateSortOptions(date) {
 
     const sortOptions = document.querySelector('.dropdown-content');
@@ -116,4 +116,3 @@ export function updateSortOptions(date) {
     return;
 }
 
-// Exports to due-dates-handlers.js

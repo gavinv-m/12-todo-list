@@ -1,4 +1,3 @@
-import { createNewTask } from './create-new-task.js';
 import { taskListManager } from './task-list-manager.js';
 import  { projectManager } from './project-manager.js';
 import  { dueDateCatalog } from './due-date-catalog.js';

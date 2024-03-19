@@ -230,5 +230,5 @@ function dueDateCatalog() {
     };
 }
 
-
+// Exports to todo-manager.js
 export { dueDateCatalog };

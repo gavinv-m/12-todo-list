@@ -284,16 +284,15 @@ dialog::backdrop {
 
 @font-face {
     font-family: "Helvetica Neue Light";
-    src:
-        url(../assets/fonts/helveticaneuelight-webfont.woff2),
-        url(../assets/fonts/helveticaneuelight-webfont.woff);
+    src: url(../../assets/fonts/helveticaneuelight-webfont.woff2),
+         url(../../assets/fonts/helveticaneuelight-webfont.woff); 
 }   
 
 
 @font-face {
     font-family: "Nimbus Sans Regular";
-    src: url(../assets/fonts/nimbussanl-reg-webfont.woff2),
-         url(../assets/fonts/nimbussanl-reg-webfont.woff); 
+    src: url(../../assets/fonts/nimbussanl-reg-webfont.woff2),
+         url(../../assets/fonts/nimbussanl-reg-webfont.woff);
 }
 
 
