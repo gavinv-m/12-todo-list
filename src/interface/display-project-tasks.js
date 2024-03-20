@@ -11,6 +11,9 @@ export function displayProjectTasks(projectName) {
     // Clear inner container
     displayProjectTasks.clearInnerContainer();
 
+    // Create container that will hold tasks
+    displayProjectTasks.createContainerWithTasks('project-tasks');
+
     for (let task of projectTaskList) {
 
         displayProjectTasks.createTask('project-task', task); 
@@ -18,10 +21,10 @@ export function displayProjectTasks(projectName) {
         displayProjectTasks.addDueDate(); 
         displayProjectTasks.addDeleteButton(projectName);
 
-        // NOTE: Different from other display functions
-        // Tasks are added directly to inner Container
-        // For styling make sure to use the selector class project-task
-        displayProjectTasks.innerContainer.appendChild(displayProjectTasks.task);
+        // Append new task to list of tasks
+        displayProjectTasks.containerWithTasks.appendChild(displayProjectTasks.task);
     }
+
+    displayProjectTasks.innerContainer.appendChild(displayProjectTasks.containerWithTasks);
 }
 
