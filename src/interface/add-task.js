@@ -1,4 +1,5 @@
 import  { taskManager } from '../application-logic/todo-manager.js';
+import { refreshManager } from './refresh.js';
 
 
 class TaskDialogHandler {
@@ -58,6 +59,10 @@ class TaskDialogHandler {
             };
 
             taskManager.addTask(task);
+
+            // Check if we need to reload page to display newly created task
+            refreshManager(task); 
+
 
             // Clear the input fields
             document.getElementById('task-name').value = '';

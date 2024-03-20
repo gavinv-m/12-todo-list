@@ -1,7 +1,9 @@
 import  { taskManager } from '../application-logic/todo-manager.js';
 import { TaskDisplayHandler } from './task-display-handler.js';
 
+// Exports to due-dates-handlers.js & refresh.js
 export function displayDayTasks(dateSelected) {
+    // dateSelected represents dateGroups keys in due-date-catalogs
     // Get dueDate object
     const date = taskManager.sendDateGroup(dateSelected);
 

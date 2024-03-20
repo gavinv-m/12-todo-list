@@ -101,7 +101,7 @@ function dueDateCatalog() {
         }
     };
 
-
+    // Send array of object keys
     const getDateGroups = () => Object.keys(dateGroups);
 
 

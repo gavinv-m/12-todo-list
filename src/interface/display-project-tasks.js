@@ -1,7 +1,7 @@
 import  { taskManager } from '../application-logic/todo-manager.js';
 import { TaskDisplayHandler } from './task-display-handler.js';
 
-// Exports to project-handlers.js
+// Exports to project-handlers.js & refresh.js
 export function displayProjectTasks(projectName) {
     // Get array of the tasks in a project
     const projectTaskList = taskManager.getProject(projectName);
