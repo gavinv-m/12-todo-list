@@ -5,7 +5,6 @@ import { displayProjectTasks } from './display-project-tasks.js';
 export function refreshManager(task) {
 
     const currentDisplayCategory = document.querySelector('.category').innerHTML;
-    const days = ['Today', 'Tomorrow', 'Someday'];
 
     if (task.taskProject === currentDisplayCategory) {
         displayProjectTasks(currentDisplayCategory); 
