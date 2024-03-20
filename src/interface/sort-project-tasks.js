@@ -43,6 +43,9 @@ function handleSortByPriority(projectName) {
     // Clear inner Container 
     handleSortByPriority.clearInnerContainer();
 
+    // Create container that will hold tasks
+    handleSortByPriority.createContainerWithTasks('project-tasks');
+
     for (let task of projectTasksSortedByPriority) {
         // For CSS try to maintain the same number of items in container as displayProjectTasks
         // We are using the same class project-task
@@ -51,11 +54,12 @@ function handleSortByPriority(projectName) {
         handleSortByPriority.addPriority();
         handleSortByPriority.addDeleteButton(projectName);
 
-        // NOTE: Different from other display functions
-        // Tasks are added directly to inner Container
-        // For styling make sure to use the selector class project-task
-        handleSortByPriority.innerContainer.appendChild(handleSortByPriority.task);
+        // Append new task to list of tasks
+        handleSortByPriority.containerWithTasks.appendChild(handleSortByPriority.task);
     }
+
+    // Append new task to list of tasks
+    handleSortByPriority.innerContainer.appendChild(handleSortByPriority.containerWithTasks);
 }
 
 // Exports to project-handlers.js
