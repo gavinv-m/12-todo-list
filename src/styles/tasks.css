@@ -1,13 +1,14 @@
-.day-task {
+.day-task, 
+.priority-task {
+    background-color: white;
+    border-radius: 3px;
+    cursor: pointer;
     height: 45px;
     width: 100%;
 }
 
 .day-task {
     align-items: center;
-    background-color: white;
-    border-radius: 3px;
-    cursor: pointer;
     justify-content: flex-start;
     /* Descendants: */
     display: flex;
@@ -23,11 +24,13 @@
 }
 
 
-.inner-container > .project-container:not(:first-child) {
-    margin-top: 10px;
+.inner-container > .project-container:not(:first-child),
+.inner-container > .priority-group:not(:first-child) {
+    margin-top: 15px;
 }
 
 
+.priority-group, 
 .project-container {
     /* Descendants: */
     display: flex;
@@ -36,11 +39,26 @@
 }
 
 
+.priority-group-heading,
 .project-heading {
     font-weight: bold;
 }
 
 
+.priority-task {
+    /* Descendants: */
+    align-items: center;
+    display: grid;
+    grid-template-columns: 15fr 2fr 1fr;
+}
+
+
+.priority-task svg {
+    justify-self: end;
+}
+
+
+.priority-tasks, 
 .project-tasks {
     /* Descendants: */
     display: flex;
