@@ -11,6 +11,9 @@ function handleSortByDueDate(projectName) {
 
     // Clear innerContainer
     handleSortByDueDate.clearInnerContainer();
+
+    // Create container that will hold tasks
+    handleSortByDueDate.createContainerWithTasks('project-tasks');
     
     for (let task of projectTasksSortedByEarliest) {
 
@@ -21,11 +24,13 @@ function handleSortByDueDate(projectName) {
         handleSortByDueDate.addDueDate();
         handleSortByDueDate.addDeleteButton(projectName); 
 
-        // NOTE: Different from other display functions
-        // Tasks are added directly to inner Container
-        // For styling make sure to use the selector class project-task
-        handleSortByDueDate.innerContainer.appendChild(handleSortByDueDate.task); 
+        // Append new task to list of tasks
+        handleSortByDueDate.containerWithTasks.appendChild(handleSortByDueDate.task);
     }
+
+    // Append to inner Container
+    handleSortByDueDate.innerContainer.appendChild(handleSortByDueDate.containerWithTasks);
+
 }
 
 
