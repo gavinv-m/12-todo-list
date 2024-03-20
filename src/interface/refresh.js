@@ -1,14 +1,18 @@
 import { displayDayTasks } from './display-day-tasks.js';
-
+import { displayProjectTasks } from './display-project-tasks.js'; 
 
 // Exports to add-task.js
 export function refreshManager(task) {
 
     const currentDisplayCategory = document.querySelector('.category').innerHTML;
     const days = ['Today', 'Tomorrow', 'Someday'];
-    const currentDisplayCategoryIsDay = days.some((day) => day === currentDisplayCategory); 
 
-    if (currentDisplayCategoryIsDay) {
+    if (task.taskProject === currentDisplayCategory) {
+        displayProjectTasks(currentDisplayCategory); 
+        return; 
+    }
+
+    else {
         let today = new Date ();
         today = today.toDateString();
         
@@ -29,7 +33,6 @@ export function refreshManager(task) {
 
             displayDayTasks(dateSelected);
         }
-        
         return;
     }
 }
