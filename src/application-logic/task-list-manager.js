@@ -3,8 +3,7 @@ import  { editTask } from './edit-task.js';
 
 function taskListManager() {
 
-    let allTasks = [
-    ];
+    let allTasks = [];
 
     let allTimeTasksCreated = 0;
 
@@ -17,12 +16,10 @@ function taskListManager() {
     const appendAllTasks = (task) => {
         allTasks.push(task);
         addTaskId(task);
-
     };
 
 
     const displayAllTasks = () => {
-
         console.table(allTasks);
     };
 
@@ -30,16 +27,21 @@ function taskListManager() {
     const getTaskList = () => allTasks;
 
 
+    const getTask = (taskId) => {   
+        let task = allTasks.find((taskObject) => taskObject.id === taskId);
+        return task;
+    };
+
+
     const updateTask = (taskIDNum) => {
 
         for (let task of allTasks) {
-
             if (task.id === taskIDNum) {
-
                 task = editTask(task);
                 break;
             }
         }
+        return;
     }; 
 
 
@@ -47,6 +49,7 @@ function taskListManager() {
         appendAllTasks,
         displayAllTasks,
         getTaskList,
+        getTask,
         updateTask
     };
 }

@@ -1,5 +1,6 @@
 import  { taskManager } from '../application-logic/todo-manager.js';
 import { TaskDisplayHandler } from './task-display-handler.js';
+import { attachEditListeners } from './attach-edit-listeners.js';
 
 // Exports to due-dates-handlers.js & refresh.js
 export function displayDayTasks(dateSelected) {
@@ -28,7 +29,7 @@ export function displayDayTasks(dateSelected) {
             // Create container and pass task object
             displayDayTasks.createTask('day-task', task);
             displayDayTasks.addTaskName();
-            displayDayTasks.addDeleteButton(dateSelected); 
+            displayDayTasks.addDeleteButton(dateSelected);
 
             // Append new task to list of tasks
             displayDayTasks.containerWithTasks.appendChild(displayDayTasks.task);
@@ -37,5 +38,8 @@ export function displayDayTasks(dateSelected) {
         displayDayTasks.appendTasksToGroupContainer(); 
         displayDayTasks.appendToInnerContainer(); 
     }
+
+    attachEditListeners('.day-task');
+
     return;
 }

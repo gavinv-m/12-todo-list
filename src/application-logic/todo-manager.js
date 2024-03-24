@@ -22,6 +22,8 @@ function TodoManager() {
 
     const getProject = (projectName) => projectMethods.getProject(projectName);
 
+    const getTask = (taskID) => taskListMethods.getTask(taskID);
+
 
     const removeTask = (id) => {
         deleteTask(taskList, id); 
@@ -74,6 +76,7 @@ function TodoManager() {
         getNumberOfTasksInDateGroup: dueDateMethods.getNumberOfTasksInDateGroup,
         getProject,
         getProjectNames: projectMethods.getProjectNames,
+        getTask,
         getTasksByDateGroup: dueDateMethods.getTasksByDateGroup,
         removeTask,
         sendDateGroup,

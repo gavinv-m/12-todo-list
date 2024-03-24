@@ -84,6 +84,7 @@ export class TaskDisplayHandler {
 
         // Update current task object 
         this.currentTask = task;
+        this.task.setAttribute('id', this.currentTask.id);
     }
     
     // Append the list of tasks to the container with a heading

@@ -1,3 +1,59 @@
+function createCloseIcon() {
+    // Create SVG element
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", "20px");
+    svg.setAttribute("height", "20px");
+    svg.setAttribute("viewBox", "-3 0 32 32");
+
+    // Create first path element
+    const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path1.setAttribute("d", "M13.11 29.113c7.243 0 13.113-5.871 13.113-13.113s-5.87-13.113-13.113-13.113c-7.242 0-13.113 5.871-13.113 13.113s5.871 13.113 13.113 13.113zM13.11 3.936c6.652 0 12.064 5.412 12.064 12.064s-5.412 12.064-12.064 12.064c-6.653 0-12.064-5.412-12.064-12.064s5.411-12.064 12.064-12.064z");
+    path1.setAttribute("fill", "#aeaeae");
+
+    // Create second path element
+    const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path2.setAttribute("d", "M13.906 21.637l0.742 0.742 6.378-6.379-6.378-6.379-0.742 0.742 5.112 5.112h-12.727v1.049h12.727");
+    path2.setAttribute("fill", "#aeaeae");
+
+    // Append paths to SVG
+    svg.appendChild(path1);
+    svg.appendChild(path2);
+
+    return svg;
+}
+
+
+function createBinIcon() {
+    // Create SVG element
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", "20px");
+    svg.setAttribute("height", "20px");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    
+    // Create path elements
+    const pathsData = [
+        "M10 11V17",
+        "M14 11V17",
+        "M4 7H20",
+        "M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z",
+        "M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z"
+    ];
+
+    pathsData.forEach(pathData => {
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", pathData);
+        path.setAttribute("stroke", "#aeaeae");
+        path.setAttribute("stroke-width", "2");
+        path.setAttribute("stroke-linecap", "round");
+        path.setAttribute("stroke-linejoin", "round");
+        svg.appendChild(path);
+    });
+    
+    // Return the created SVG element
+    return svg;
+}
+
+
 function createTodaySVG() {
 
     // Create a new SVG element
@@ -85,9 +141,9 @@ function createTomorrowSVG() {
 }
 
 
-function createSomedaySVG() {
+function createSomedaySVG(className) {
     // Create a new SVG element
-    const svg = document.querySelector('.upcoming-svg');
+    const svg = document.querySelector(className);
 
     svg.setAttribute("class", "upcoming-svg");
     svg.setAttribute("fill", "#000000");
@@ -248,11 +304,11 @@ function createSortIcon() {
 }
 
 
-export function addImages() {
+function addImages() {
 
     createTodaySVG();
     createTomorrowSVG();
-    createSomedaySVG();
+    createSomedaySVG('.upcoming-svg');
     createPlusSymbol();
     createProjectIconSVG();
     createSortIcon();
@@ -260,3 +316,6 @@ export function addImages() {
 
     return; 
 }
+
+// Exports to index.js & edit-window.js
+export { addImages, createSomedaySVG, createBinIcon, createCloseIcon }; 

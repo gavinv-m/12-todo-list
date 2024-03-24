@@ -332,8 +332,15 @@ input[type=date]:focus::-webkit-datetime-edit {
     background-color: #f8f4f4;
     grid-column: 2 / 3;
     grid-row: 2 / 3;
+}
 
-    /* Descendants: */
+/* Class selector has same specificity as chained,
+.main-content.multi-main-content must come after, later rules will be applied */
+.main-content.multi-main-content {
+
+    /* Descendants:  */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 option {
