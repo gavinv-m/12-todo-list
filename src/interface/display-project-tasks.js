@@ -1,5 +1,7 @@
 import  { taskManager } from '../application-logic/todo-manager.js';
 import { TaskDisplayHandler } from './task-display-handler.js';
+import { attachEditListeners } from './attach-edit-listeners.js';
+
 
 // Exports to project-handlers.js & refresh.js
 export function displayProjectTasks(projectName) {
@@ -26,5 +28,8 @@ export function displayProjectTasks(projectName) {
     }
 
     displayProjectTasks.innerContainer.appendChild(displayProjectTasks.containerWithTasks);
+
+    attachEditListeners('.project-task');
+    return; 
 }
 

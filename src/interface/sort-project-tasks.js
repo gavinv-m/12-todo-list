@@ -1,5 +1,6 @@
 import { taskManager } from '../application-logic/todo-manager.js';
 import { TaskDisplayHandler } from './task-display-handler.js';
+import { attachEditListeners } from './attach-edit-listeners.js';
 
 
 function handleSortByDueDate(projectName) {
@@ -30,7 +31,9 @@ function handleSortByDueDate(projectName) {
 
     // Append to inner Container
     handleSortByDueDate.innerContainer.appendChild(handleSortByDueDate.containerWithTasks);
-
+    attachEditListeners('.project-task');
+    
+    return; 
 }
 
 
@@ -56,10 +59,14 @@ function handleSortByPriority(projectName) {
 
         // Append new task to list of tasks
         handleSortByPriority.containerWithTasks.appendChild(handleSortByPriority.task);
+        
     }
 
     // Append new task to list of tasks
     handleSortByPriority.innerContainer.appendChild(handleSortByPriority.containerWithTasks);
+
+    attachEditListeners('.project-task');
+    return;
 }
 
 // Exports to project-handlers.js

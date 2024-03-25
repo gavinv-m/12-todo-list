@@ -1,6 +1,8 @@
 import { taskManager } from '../application-logic/todo-manager.js';
 import { displayDayTasks } from './display-day-tasks.js';
 import { TaskDisplayHandler } from './task-display-handler.js';
+import { attachEditListeners } from './attach-edit-listeners.js';
+
 
 // Sort tasks Due Someday by earliest
 function handleSortByEarliestEvent(dateGroup) {
@@ -35,7 +37,8 @@ function handleSortByEarliestEvent(dateGroup) {
    handleSortByEarliestEvent.appendTasksToGroupContainer();
 
    // Append to inner container 
-   handleSortByEarliestEvent.appendToInnerContainer(); 
+   handleSortByEarliestEvent.appendToInnerContainer();
+   attachEditListeners('.earliest-task');
    return;
 }
 
@@ -82,6 +85,8 @@ function handleSortByPriorityEvent(dateGroup) {
         handleSortByPriorityEvent.appendToInnerContainer(); 
 
     };
+
+    attachEditListeners('.priority-task');
     return;
 }
 

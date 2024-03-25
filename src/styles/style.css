@@ -258,6 +258,27 @@ dialog::backdrop {
 }
 
 
+.edit-dialog {
+    display: none;
+    position: absolute;
+    top: 22%;
+    left: 36%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    width: minmax(250px, 100%);
+    max-height: 90%; /* Adjust the maximum height if needed */
+}
+
+
+.edit-dialog-container {
+    position: relative;
+}
+
+
 .folder-icon {
     justify-self: center;
 }
@@ -337,7 +358,6 @@ input[type=date]:focus::-webkit-datetime-edit {
 /* Class selector has same specificity as chained,
 .main-content.multi-main-content must come after, later rules will be applied */
 .main-content.multi-main-content {
-
     /* Descendants:  */
     display: grid;
     grid-template-columns: 2fr 1fr;

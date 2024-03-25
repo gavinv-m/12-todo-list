@@ -92,10 +92,10 @@ function projectManager() {
 
         const projectTaskList = projects[projectName];
 
-		console.log(`${projectName}:`);
-        for (let task of projectTaskList) {
-			console.log(task);
-		}
+		// console.log(`${projectName}:`);
+        // for (let task of projectTaskList) {
+		// 	console.log(task);
+		// }
         return projectTaskList;
     };
 
@@ -103,9 +103,9 @@ function projectManager() {
     const getProjectNames = () => {
 
         const projectNames = Object.keys(projects);
-        projectNames.forEach((projectName) => {
-            console.log(projectName);
-        });
+        // projectNames.forEach((projectName) => {
+        //     console.log(projectName);
+        // });
 
         return projectNames;
     };

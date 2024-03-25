@@ -2,9 +2,8 @@ import { createCalendar, createCloseIcon } from './add-images.js';
 import  { taskManager } from '../application-logic/todo-manager.js';
 
 
-function styleMainContent(mainContent) {
-    
-    mainContent.classList.add('multi-main-content');
+function styleMainContent(dialog) {
+    dialog.style.display = 'block';
 }
 
 function fetchTaskDetails(task) {
@@ -20,6 +19,11 @@ export function displayEditDialog(task) {
     const taskObject = fetchTaskDetails(task);
 
     const mainContent = document.querySelector('.main-content');
+    mainContent.classList.add('multi-main-content');
+
+    const container = document.createElement('div');
+    container.classList.add('edit-dialog-container');
+
     const editDialog = document.createElement('dialog');
     editDialog.classList.add('edit-dialog');
     const form = document.createElement('form');
@@ -83,8 +87,10 @@ export function displayEditDialog(task) {
         form.appendChild(closeContainer);
 
     editDialog.appendChild(form);
-    mainContent.appendChild(editDialog);
-    styleMainContent(mainContent);
+    container.appendChild(editDialog);
+    mainContent.appendChild(container);
+
+    styleMainContent(editDialog);
 
     return;
 }

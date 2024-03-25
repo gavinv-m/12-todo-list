@@ -5,8 +5,6 @@ import { displayEditDialog } from './edit-window.js';
 export function attachEditListeners(classList) {
 
     const tasksToEdit = document.querySelectorAll(classList);
-    console.log(classList);
-    console.log(typeof(classList));
 
     // Task represents the container on the display, with an id attribute 
     tasksToEdit.forEach((task) => {
