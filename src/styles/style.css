@@ -340,7 +340,7 @@ input[type=date]:focus::-webkit-datetime-edit {
 
     /* Descendants:  */
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 2fr 1fr;
 }
 
 option {

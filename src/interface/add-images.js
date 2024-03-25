@@ -141,9 +141,9 @@ function createTomorrowSVG() {
 }
 
 
-function createSomedaySVG(className) {
+function createSomedaySVG() {
     // Create a new SVG element
-    const svg = document.querySelector(className);
+    const svg = document.querySelector('.upcoming-svg');
 
     svg.setAttribute("class", "upcoming-svg");
     svg.setAttribute("fill", "#000000");
@@ -188,6 +188,53 @@ function createSomedaySVG(className) {
 }
 
 
+function createCalendar() {
+    // Create a new SVG element
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "upcoming-svg");
+    svg.setAttribute("fill", "#000000");
+    svg.setAttribute("width", "20px");
+    svg.setAttribute("height", "20px");
+    svg.setAttribute("viewBox", "0 0 32 32");
+    
+    // Create the 'path' element
+    const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path1.setAttribute("d", "M28.55,6.57H26.42V4.93a0.5,0.5,0,1,0-1,0V6.57H19.81V5.06a0.5,0.5,0,0,0-1,0V6.57H13.19V5.06a0.5,0.5,0,0,0-1,0V6.57H6.58V5.06a0.5,0.5,0,1,0-1,0V6.57H3.45A2,2,0,0,0,1.5,8.52v17.1a2,2,0,0,0,1.95,2h25.1a2,2,0,0,0,1.95-2V8.52A2,2,0,0,0,28.55,6.57Zm-25.1,1H5.58V9.08a0.5,0.5,0,0,0,1,0V7.57h5.61V9.08a0.5,0.5,0,0,0,1,0V7.57h5.61V9.08a0.5,0.5,0,0,0,1,0V7.57h5.61V8.94a0.5,0.5,0,1,0,1,0V7.57h2.13a1,1,0,0,1,.95.95v2.94H2.5V8.52A1,1,0,0,1,3.45,7.57Zm25.1,19H3.45a1,1,0,0,1-.95-1V12.46h27V25.62A1,1,0,0,1,28.55,26.57Z");
+    
+    // Create the 'rect' elements
+    const rects = [
+        { x: "9.99", y: "14.39" },
+        { x: "14.98", y: "14.39" },
+        { x: "19.98", y: "14.37" },
+        { x: "5", y: "18.45" },
+        { x: "9.99", y: "18.45" },
+        { x: "14.98", y: "18.45" },
+        { x: "5", y: "22.56" },
+        { x: "9.99", y: "22.56" },
+        { x: "14.98", y: "22.55" },
+        { x: "19.98", y: "22.55" },
+        { x: "19.98", y: "18.44" },
+        { x: "24.87", y: "14.36" },
+        { x: "24.87", y: "18.42" }
+    ];
+    
+    for (let i = 0; i < rects.length; i++) {
+        const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        rect.setAttribute("x", rects[i].x);
+        rect.setAttribute("y", rects[i].y);
+        rect.setAttribute("width", "2.13");
+        rect.setAttribute("height", "2.13");
+        svg.appendChild(rect);
+    }
+    
+    // Append the 'path' element to the SVG
+    svg.appendChild(path1);
+    
+    // Return the SVG element
+    return svg;
+}
+
+
 function createPlusSymbol() {
 
     const svg = document.querySelector('.plus-symbol');
@@ -218,39 +265,6 @@ function createPlusSymbol() {
     path2.setAttribute("stroke-linejoin", "round");
     svg.appendChild(path2);
 }
-
-
-function createPlusSymbolAgain() {
-
-    const svg = document.querySelector('.add-symbol');
-    svg.setAttribute("fill", "none");
-    svg.setAttribute("width", "20px");
-    svg.setAttribute("height", "20px");
-    svg.setAttribute("viewBox", "0 0 24 24");
-
-    // Create the 'rect' element
-    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-    rect.setAttribute("width", "24");
-    rect.setAttribute("height", "24");
-    rect.setAttribute("fill", "white");
-    svg.appendChild(rect);
-
-    // Create the 'path' elements
-    const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path1.setAttribute("d", "M12 6V18");
-    path1.setAttribute("stroke", "#fe5a4c");
-    path1.setAttribute("stroke-linecap", "round");
-    path1.setAttribute("stroke-linejoin", "round");
-    svg.appendChild(path1);
-
-    const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path2.setAttribute("d", "M6 12H18");
-    path2.setAttribute("stroke", "#fe5a4c");
-    path2.setAttribute("stroke-linecap", "round");
-    path2.setAttribute("stroke-linejoin", "round");
-    svg.appendChild(path2);
-}
-
 
 
 function createProjectIconSVG() {
@@ -308,7 +322,7 @@ function addImages() {
 
     createTodaySVG();
     createTomorrowSVG();
-    createSomedaySVG('.upcoming-svg');
+    createSomedaySVG();
     createPlusSymbol();
     createProjectIconSVG();
     createSortIcon();
@@ -318,4 +332,4 @@ function addImages() {
 }
 
 // Exports to index.js & edit-window.js
-export { addImages, createSomedaySVG, createBinIcon, createCloseIcon }; 
+export { addImages, createCalendar, createBinIcon, createCloseIcon }; 

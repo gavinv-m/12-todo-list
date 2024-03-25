@@ -13,7 +13,6 @@ export function displayDayTasks(dateSelected) {
     // Clear innerContainer
     displayDayTasks.clearInnerContainer();
 
-    // Go through projects in date group 
     for (let project in date) {
 
         // Check if empty, don't display heading

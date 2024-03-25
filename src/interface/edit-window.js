@@ -1,4 +1,4 @@
-import { createSomedaySVG, createCloseIcon } from './add-images.js';
+import { createCalendar, createCloseIcon } from './add-images.js';
 import  { taskManager } from '../application-logic/todo-manager.js';
 
 
@@ -8,8 +8,7 @@ function styleMainContent(mainContent) {
 }
 
 function fetchTaskDetails(task) {
-    let taskID = task.getAttribute("id");
-    taskID = Number(taskID);
+    let taskID = Number(task.getAttribute("id"));
     const taskObject = taskManager.getTask(taskID);
     return taskObject;
 }
@@ -21,11 +20,13 @@ export function displayEditDialog(task) {
     const taskObject = fetchTaskDetails(task);
 
     const mainContent = document.querySelector('.main-content');
-        const editDialog = document.createElement('dialog');
+    const editDialog = document.createElement('dialog');
+    editDialog.classList.add('edit-dialog');
+    const form = document.createElement('form');
 
             const nameOfTask = document.createElement('h1');
-            nameOfTask.textContent = taskObject.taskName;
-        editDialog.appendChild(nameOfTask);
+                nameOfTask.textContent = taskObject.taskName;
+                form.appendChild(nameOfTask);
 
             const dateAndProjectContainer = document.createElement('div');
 
@@ -54,9 +55,7 @@ export function displayEditDialog(task) {
                 dateAndProjectContainer.appendChild(dateContainer);
 
                 const projectContainer = document.createElement('div');
-                    const icon = document.createElement('svg');
-                        icon.classList.add('edit-project-icon');
-                        createSomedaySVG('edit-project-icon');
+                    const icon = createCalendar();
                         projectContainer.appendChild(icon);
 
                     const projectHeading = document.createElement('h4');
@@ -71,18 +70,19 @@ export function displayEditDialog(task) {
                 dateAndProjectContainer.appendChild(projectContainer);
                 dateAndProjectContainer.appendChild(hr);
 
-        editDialog.appendChild(dateAndProjectContainer);
+        form.appendChild(dateAndProjectContainer);
             
             const taskDescription = document.createElement('textarea');
             taskDescription.classList.add('edit-task-description');
-        editDialog.appendChild(taskDescription);
+        form.appendChild(taskDescription);
 
             const closeContainer = document.createElement('div');
                 const closeIcon = createCloseIcon();
                 closeIcon.setAttribute('id', 'close-edit');
                 closeContainer.appendChild(closeIcon);
-        editDialog.appendChild(closeContainer);
+        form.appendChild(closeContainer);
 
+    editDialog.appendChild(form);
     mainContent.appendChild(editDialog);
     styleMainContent(mainContent);
 
