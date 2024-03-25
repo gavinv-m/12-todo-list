@@ -41,7 +41,10 @@ function createCircle() {
 export function displayProject() {
 
     const arrayOfProjectNames = taskManager.getProjectNames();
-    const projectsList = document.querySelector('.projects-container');
+    let projectsList = document.querySelector('.projects-container');
+
+    // Clear existing container, avoid duplication
+    projectsList.innerHTML = '';
 
     for (let projectHeading of arrayOfProjectNames) {
 
