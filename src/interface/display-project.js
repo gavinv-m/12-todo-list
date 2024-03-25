@@ -41,26 +41,27 @@ function createCircle() {
 export function displayProject() {
 
     const arrayOfProjectNames = taskManager.getProjectNames();
-    const projectToAdd = arrayOfProjectNames[arrayOfProjectNames.length - 1];
-
     const projectsList = document.querySelector('.projects-container');
 
-    const project = document.createElement('div');
-    project.setAttribute('class', 'project');
+    for (let projectHeading of arrayOfProjectNames) {
 
-    const circle = createCircle();
-    project.appendChild(circle); 
+        const project = document.createElement('div');
+        project.setAttribute('class', 'project');
 
-    const projectName = document.createElement('h2');
-    projectName.textContent = projectToAdd;
-    project.appendChild(projectName);
-    
-    const numberOfTasksInProject = document.createElement('h6');
-    project.appendChild(numberOfTasksInProject);
+        const circle = createCircle();
+        project.appendChild(circle); 
 
-    projectName.addEventListener('click', (event) => setUpProjectEventListeners(event))
+        const projectName = document.createElement('h2');
+        projectName.textContent = projectHeading;
+        project.appendChild(projectName);
+        
+        const numberOfTasksInProject = document.createElement('h6');
+        project.appendChild(numberOfTasksInProject);
 
-    projectsList.appendChild(project);
+        projectName.addEventListener('click', (event) => setUpProjectEventListeners(event))
+
+        projectsList.appendChild(project);
+    }
 
     return;
 }
