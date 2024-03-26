@@ -1,6 +1,7 @@
 import  { taskManager } from '../application-logic/todo-manager.js';
 import { displayDayTasks } from './display-day-tasks.js';
 import { displayProject } from './display-project.js';
+import { updateSortOptions } from './sort-due-date-tasks.js';
 
 
 function getRandomDate() {
@@ -130,6 +131,7 @@ export function displayDefaultTaks() {
     
     addDefaultTasks();
     displayDayTasks('dueToday');
+    updateSortOptions('dueToday');
     displayProject();
 
 }

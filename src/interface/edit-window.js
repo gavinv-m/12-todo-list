@@ -22,15 +22,21 @@ export function displayEditDialog(task) {
     mainContent.classList.add('multi-main-content');
 
     const container = document.createElement('div');
-    container.classList.add('edit-dialog-container');
+    container.classList.add('edit-window');
 
-    const editDialog = document.createElement('dialog');
-    editDialog.classList.add('edit-dialog');
+    const formContainer = document.createElement('div');
+    formContainer.classList.add('edit-form-container');
     const form = document.createElement('form');
 
             const nameOfTask = document.createElement('h1');
                 nameOfTask.textContent = taskObject.taskName;
                 form.appendChild(nameOfTask);
+
+            const priorityContainer = document.createElement('div'); 
+                const priorityHeading = document.createElement('h4');
+                priorityHeading.textContent = 'Priority';
+
+
 
             const dateAndProjectContainer = document.createElement('div');
 
@@ -86,11 +92,11 @@ export function displayEditDialog(task) {
                 closeContainer.appendChild(closeIcon);
         form.appendChild(closeContainer);
 
-    editDialog.appendChild(form);
-    container.appendChild(editDialog);
+    formContainer.appendChild(form);
+    container.appendChild(formContainer);
     mainContent.appendChild(container);
 
-    styleMainContent(editDialog);
+    styleMainContent(formContainer);
 
     return;
 }
