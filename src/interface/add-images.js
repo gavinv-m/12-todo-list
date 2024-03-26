@@ -264,6 +264,7 @@ function createPlusSymbol() {
     path2.setAttribute("stroke-linecap", "round");
     path2.setAttribute("stroke-linejoin", "round");
     svg.appendChild(path2);
+    return; 
 }
 
 
@@ -293,6 +294,7 @@ function createProjectIconSVG() {
     path2.setAttribute("stroke-linecap", "round");
     path2.setAttribute("stroke-linejoin", "round");
     svg.appendChild(path2);
+    return;
 }
 
 
@@ -315,6 +317,30 @@ function createSortIcon() {
 
     svg.appendChild(path1);
     svg.appendChild(path2);
+    return; 
+}
+
+function createThreeDotsIcon() {
+    const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgElement.setAttribute("width", "20px");
+    svgElement.setAttribute("height", "20px");
+    svgElement.setAttribute("viewBox", "0 0 512 512");
+
+    const gElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    gElement.setAttribute("id", "Page-1");
+    gElement.setAttribute("stroke", "none");
+    gElement.setAttribute("stroke-width", "1");
+    gElement.setAttribute("fill", "none");
+    gElement.setAttribute("fill-rule", "evenodd");
+
+    const pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    pathElement.setAttribute("fill", "#aeaeae");
+    pathElement.setAttribute("d", "M0,0 L106.67,0 L106.67,106.67 L0,106.67 Z M32,32 L32,74.67 L74.67,74.67 L74.67,32 L32,32 Z M170.67,42.67 L341.33,42.67 L341.33,85.33 L170.67,85.33 L170.67,42.67 Z M0,149.33 L106.67,149.33 L106.67,256 L0,256 Z M32,181.33 L32,224 L74.67,224 L74.67,181.33 L32,181.33 Z M170.67,192 L341.33,192 L341.33,234.67 L170.67,234.67 L170.67,192 Z M0,298.67 L106.67,298.67 L106.67,405.33 L0,405.33 Z M32,330.67 L32,373.33 L74.67,373.33 L74.67,330.67 L32,330.67 Z M170.67,341.33 L341.33,341.33 L341.33,384 L170.67,384 L170.67,341.33 Z");
+
+    gElement.appendChild(pathElement);
+    svgElement.appendChild(gElement);
+
+    return svgElement;
 }
 
 
@@ -332,4 +358,4 @@ function addImages() {
 }
 
 // Exports to index.js & edit-window.js
-export { addImages, createCalendar, createBinIcon, createCloseIcon }; 
+export { addImages, createCalendar, createBinIcon, createCloseIcon, createThreeDotsIcon }; 
