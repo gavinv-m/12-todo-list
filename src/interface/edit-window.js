@@ -56,6 +56,46 @@ function createProjectContainer(taskObject) {
 }
 
 
+function createPriorityContainer(taskObject) {
+
+    const container = document.createElement('div');
+
+    const heading = document.createElement('h4');
+    heading.textContent = 'Priority';
+    container.appendChild(heading);
+
+    // Create select element
+    const currentPriority = taskObject.priority;
+
+    const select = document.createElement('select');
+    const firstOption = document.createElement('option');
+    firstOption.innerHTML = 'High Priority';
+    firstOption.setAttribute('value', 'high');
+
+    const secondOption = document.createElement('option');
+    secondOption.innerHTML = 'Low Priority';
+    secondOption.setAttribute('value', 'low');
+    
+
+    const thirdOption = document.createElement('option');
+    thirdOption.innerHTML = 'No Priority';
+    thirdOption.setAttribute('value', 'none');
+
+    (currentPriority === 'high') ? firstOption.setAttribute('selected', '') :
+    (currentPriority === 'low')  ? secondOption.setAttribute('selected', '') : 
+    thirdOption.setAttribute('selected', '');
+
+
+    select.appendChild(thirdOption);
+    select.appendChild(secondOption);
+    select.appendChild(firstOption);
+
+    container.appendChild(select);
+
+    return container;
+}
+
+
 // Exports to attach edit listeners 
 // Task parameter represents the task displayed in DOM
 export function displayEditDialog(task) {
@@ -90,6 +130,9 @@ export function displayEditDialog(task) {
                 
     // Append project container
     detailsContainer.appendChild(createProjectContainer(taskObject));
+
+    // Append priority container 
+    detailsContainer.appendChild(createPriorityContainer(taskObject));
 
     const hrTwo = document.createElement('hr');
     detailsContainer.appendChild(hrTwo);
