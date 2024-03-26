@@ -1,5 +1,6 @@
 import { createCalendar, createCloseIcon, createThreeDotsIcon } from './add-images.js';
 import  { taskManager } from '../application-logic/todo-manager.js';
+import { setUpEditClose } from './close-edit-window.js';
 
 
 function styleMainContent(dialog) {
@@ -149,7 +150,13 @@ export function displayEditDialog(task) {
     const closeContainer = document.createElement('div');
     const closeIcon = createCloseIcon();
     closeIcon.setAttribute('id', 'close-edit');
+
+    // Set up close event listener
+    const taskID = taskObject.id;
+    setUpEditClose(closeIcon, taskID);
+
     closeContainer.appendChild(closeIcon);
+
 
     formContainer.appendChild(closeContainer);
     container.appendChild(formContainer);
