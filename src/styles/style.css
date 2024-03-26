@@ -23,7 +23,12 @@ body {
 }
 
 
-#add-project {
+#add-project,
+.add-task-btn:hover,
+.add-task-form-buttons button:hover,  
+#close-edit, 
+.date > h2,
+.dropdown-content > h2 {
     cursor: pointer;
 }
 
@@ -111,10 +116,7 @@ body {
 }
 
 
-.add-task-btn:hover,
-.add-task-form-buttons button:hover {
-    cursor: pointer;
-}
+
 
 
 .add-task-form {
@@ -214,10 +216,6 @@ dialog::backdrop {
 }
 
 
-.date > h2 {
-    cursor: pointer;
-}
-
 
 .date > h6 {
     justify-self: center;
@@ -241,11 +239,6 @@ dialog::backdrop {
     gap: 5px;
 }
 
-
-
-.dropdown-content > h2 {
-    cursor: pointer;
-}
 
 
 .due-dates {

@@ -114,8 +114,9 @@ export function displayEditDialog(task) {
     const form = document.createElement('form');
 
     // Add task name to form
-    const nameOfTask = document.createElement('h1');
-    nameOfTask.textContent = taskObject.taskName;
+    const nameOfTask = document.createElement('input');
+    nameOfTask.setAttribute('type', 'text');
+    nameOfTask.setAttribute('value', taskObject.taskName);
     form.appendChild(nameOfTask);
 
     // Create task details container
