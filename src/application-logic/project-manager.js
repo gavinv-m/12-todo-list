@@ -90,23 +90,16 @@ function projectManager() {
 
     const getProject = (projectName) => {
 
+        // Get array of tasks
         const projectTaskList = projects[projectName];
-
-		// console.log(`${projectName}:`);
-        // for (let task of projectTaskList) {
-		// 	console.log(task);
-		// }
         return projectTaskList;
     };
 
 
     const getProjectNames = () => {
 
+        // Get array of project names
         const projectNames = Object.keys(projects);
-        // projectNames.forEach((projectName) => {
-        //     console.log(projectName);
-        // });
-
         return projectNames;
     };
 

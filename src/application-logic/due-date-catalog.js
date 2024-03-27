@@ -19,6 +19,12 @@ function dueDateCatalog() {
         dueSomeDay: 0
     };
 
+    const dateDisplays = {
+        Today: 'dueToday',
+        Tomorrow: 'dueTomorrow',
+        Someday: 'dueSomeday'
+    };
+
     const currentDate = new Date ();
     const today = currentDate.toDateString();
 
@@ -101,6 +107,9 @@ function dueDateCatalog() {
         }
     };
 
+    // Send object
+    const getDateDisplays = () => dateDisplays; 
+    
     // Send array of object keys
     const getDateGroups = () => Object.keys(dateGroups);
 
@@ -221,6 +230,7 @@ function dueDateCatalog() {
         assignToDueDateGroup,
         checkIfInCorrectDateGroup,
         getDateGroups,
+        getDateDisplays,
         getTasksByDateGroup,
         getNumberOfTasksInDateGroup,
         removeTaskFromDateGroup,

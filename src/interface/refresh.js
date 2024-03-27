@@ -10,8 +10,21 @@ function refreshAfterEditTask() {
     const projectNames = taskManager.getProjectNames();
     const isProject = projectNames.some((projectName) => projectName === currentDisplayCategory); 
 
-    if (isProject) displayProjectTasks(currentDisplayCategory);
+    if (isProject) {
+        displayProjectTasks(currentDisplayCategory);
+        return;
+    }
 
+    else {
+        const dateDisplays = taskManager.getDateDisplays();
+
+        for (let day in dateDisplays) {
+            if (day === currentDisplayCategory) {
+                displayDayTasks(dateDisplays[day]);
+                return;
+            }
+        }
+    }
 }
 
 // Exports to add-task.js 
