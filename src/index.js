@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setUpDueDatesEventListeners();
     setupClickEventListeners();
     displayDefaultTaks();
-    displayNumberOfTasks();
+    displayNumberOfTasks(); 
+
 });
 
 
