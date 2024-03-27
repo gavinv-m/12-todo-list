@@ -1,10 +1,11 @@
 import  { taskManager } from '../application-logic/todo-manager.js';
+import { editTask } from '../application-logic/edit-task.js';
 
 
 function verifyUpdateStatus(taskID) {
-    // taskObject represents the unedited one 
-    const taskObject = taskManager.getTask(taskID);
+    const originalTaskObject = taskManager.getTask(taskID);
 
+    // Create edited task
     const editedTask = {
         taskName: document.getElementById('edit-task-name').value,
         id: taskID,
@@ -14,12 +15,13 @@ function verifyUpdateStatus(taskID) {
         taskDescription: document.getElementById('edit-task-description').value
     };
 
-    for (let property in taskObject) {
-        if (taskObject[property] !== editedTask[property]) {
-            console.log(`Not the same`);
+    for (let property in originalTaskObject) {
+        if (originalTaskObject[property] !== editedTask[property]) {
+            editTask(editedTask, originalTaskObject);
+            taskManager.updateTask(taskID);
             break;
         }
-        
+        continue;
     }
     return;
 }

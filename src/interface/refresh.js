@@ -1,7 +1,7 @@
 import { displayDayTasks } from './display-day-tasks.js';
 import { displayProjectTasks } from './display-project-tasks.js'; 
 
-// Exports to add-task.js
+// Exports to add-task.js 
 export function refreshManager(task) {
 
     const currentDisplayCategory = document.querySelector('.category').innerHTML;

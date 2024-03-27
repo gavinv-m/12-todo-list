@@ -33,24 +33,11 @@ function taskListManager() {
     };
 
 
-    const updateTask = (taskIDNum) => {
-
-        for (let task of allTasks) {
-            if (task.id === taskIDNum) {
-                task = editTask(task);
-                break;
-            }
-        }
-        return;
-    }; 
-
-
     return {
         appendAllTasks,
         displayAllTasks,
         getTaskList,
         getTask,
-        updateTask
     };
 }
 
