@@ -60,9 +60,25 @@ function createProjectContainer(taskObject) {
     projectHeading.textContent = 'Project';
     projectContainer.appendChild(projectHeading);
 
-    const project = document.createElement('h4');
-    project.textContent = taskObject.taskProject;
-    projectContainer.appendChild(project); 
+    const select = document.createElement('select');
+    const selectedProject = taskObject.taskProject;
+
+    const projectNames = taskManager.getProjectNames();
+
+    projectNames.forEach((project) => {
+
+        const option = document.createElement('option');
+        option.setAttribute('value', project);
+        option.innerHTML = project;
+
+        if (project === selectedProject) {
+            option.setAttribute('selected', '');
+        }
+        
+        select.appendChild(option);
+    });
+
+    projectContainer.appendChild(select);
 
     return projectContainer;
 }
