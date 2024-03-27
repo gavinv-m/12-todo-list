@@ -1,6 +1,8 @@
 import  { taskManager } from '../application-logic/todo-manager.js';
 import { editTask } from '../application-logic/edit-task.js';
 import { refreshAfterEditTask } from './refresh.js';
+import { displayNumberOfTasks } from './number-of-tasks.js';
+
 
 function verifyUpdateStatus(taskID) {
     const originalTaskObject = taskManager.getTask(taskID);
@@ -20,6 +22,9 @@ function verifyUpdateStatus(taskID) {
             editTask(editedTask, originalTaskObject);
             taskManager.updateTask(taskID);
             refreshAfterEditTask();
+            
+            // Check if we need to update today and project numbers
+            displayNumberOfTasks();
             break;
         }
         continue;
