@@ -22,6 +22,8 @@ function TodoManager() {
 
     const getNumberOfTasksInDateGroup = (dateGroup) => dueDateMethods.getNumberOfTasksInDateGroup(dateGroup);
 
+    const getNumberOfTasksInProject = (projectName) => projectMethods.getNumberOfTasksInProject(projectName);
+
     const getProject = (projectName) => projectMethods.getProject(projectName);
 
     const getTask = (taskID) => taskListMethods.getTask(taskID);
@@ -71,8 +73,8 @@ function TodoManager() {
         createProject,
         getDateDisplays: dueDateMethods.getDateDisplays,
         getDateGroups: dueDateMethods.getDateGroups,
-        getNumberOfTasksInAllProjects: projectMethods.getNumberOfTasksInAllProjects, 
-        getNumberOfTasksInProject: projectMethods.getNumberOfTasksInProject,
+        getNumberOfTasksInAllProjects: projectMethods.getNumberOfTasksInAllProjects,
+        getNumberOfTasksInProject, 
         getNumberOfTasksInDateGroup,
         getProject,
         getProjectNames: projectMethods.getProjectNames,

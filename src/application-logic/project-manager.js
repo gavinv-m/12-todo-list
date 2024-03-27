@@ -72,21 +72,7 @@ function projectManager() {
     };
 
 
-    const getNumberOfTasksInProject = () => {
-        
-        let selectedProject = prompt(`Which project would you like to see ${Object.keys(projects).join(", ")}`);
-
-        for (let projectName in numberOfTasksInAllProjects) {
-            if (projectName === selectedProject) {
-
-                console.log(`${projectName}: ${numberOfTasksInAllProjects[projectName]}`);
-                return;
-            }
-
-        }
-        return;
-    }
-
+    const getNumberOfTasksInProject = (projectName) => numberOfTasksInAllProjects[projectName];
 
     const getProject = (projectName) => {
 
