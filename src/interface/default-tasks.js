@@ -124,6 +124,19 @@ function addDefaultTasks() {
     }
 }
 
+
+function addToTaskCreateForm() {
+    const selectProject = document.getElementById('select-project');
+
+    const defaultProjectNames = taskManager.getProjectNames();
+    defaultProjectNames.forEach((projectName) => {
+        const option = document.createElement('option');
+        option.innerHTML = projectName;
+        selectProject.appendChild(option);
+    });
+}
+
+
 export function displayDefaultTaks() {
 
     const headingTitle = document.querySelector('.category');
@@ -133,5 +146,5 @@ export function displayDefaultTaks() {
     displayDayTasks('dueToday');
     updateSortOptions('dueToday');
     displayProject();
-
+    addToTaskCreateForm();
 }

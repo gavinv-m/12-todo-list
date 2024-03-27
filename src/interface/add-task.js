@@ -11,6 +11,7 @@ class TaskDialogHandler {
         const addTaskButton = document.querySelector(addTaskBtnClass);
         addTaskButton.addEventListener('click', () => {
 
+            // Set minimum day
             const today = new Date();
             const year = today.getFullYear();
 
