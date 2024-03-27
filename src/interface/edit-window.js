@@ -17,28 +17,39 @@ function fetchTaskDetails(task) {
 function createDateContainer(taskObject) {
     const dateContainer = document.createElement('div');
 
+    // Create input element
     const calendar = document.createElement('input');
     calendar.setAttribute('type', 'date');
-    calendar.setAttribute('id', 'date-input');
-    dateContainer.appendChild(calendar);
+    calendar.setAttribute('id', 'edit-date');
 
+        // Add min attribute to calendar 
+        const today = new Date();
+        let todayMonth = today.getMonth() + 1; 
+        if (todayMonth < 10) todayMonth = '0' + todayMonth; 
+
+        let todayDay = today.getDate();
+        if (todayDay < 10) todayDay = '0' + todayDay;
+        
+        calendar.setAttribute('min', `${today.getFullYear()}-${todayMonth}-${todayDay}`);
+        dateContainer.appendChild(calendar);
+
+        // Set value attribute
+        let taskDueDate = new Date(taskObject.day);
+
+        let month = taskDueDate.getMonth() + 1; 
+        if (month < 10) month = '0' + month;
+    
+        let day = taskDueDate.getDate();
+        if (day < 10) day = '0' + day;
+    
+        calendar.setAttribute('value', `${taskDueDate.getFullYear()}-${month}-${day}`);
+
+    // Set text context
     const dateHeading = document.createElement('h4');
     dateHeading.textContent = 'Due Date';
     dateContainer.appendChild(dateHeading);
 
     const dueDate = document.createElement('h4');
-    let taskDueDate = new Date(taskObject.day);
-
-    // Set value attribute on calendar
-    let month = taskDueDate.getMonth() + 1; 
-    if (month < 10) month = '0' + month;
-
-    let day = taskDueDate.getDate();
-    if (day < 10) day = '0' + day;
-
-    calendar.setAttribute('value', `${taskDueDate.getFullYear()}-${month}-${day}`);
-
-    // Set text content
     taskDueDate = taskDueDate.toDateString();
     taskDueDate = taskDueDate.split(" ");
 

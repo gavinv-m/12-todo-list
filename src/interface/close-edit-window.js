@@ -6,7 +6,7 @@ function verifyUpdateStatus(taskID) {
     const taskObject = taskManager.getTask(taskID);
     console.log(taskObject);
 
-    const editDateValue = document.getElementById('date-input'); 
+    const editDateValue = document.getElementById('edit-date'); 
     console.log(editDateValue.value); // Correctly retrieving on edit
 
     const editProjectValue = document.getElementById('edit-project');
