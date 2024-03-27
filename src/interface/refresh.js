@@ -1,8 +1,21 @@
 import { displayDayTasks } from './display-day-tasks.js';
-import { displayProjectTasks } from './display-project-tasks.js'; 
+import { displayProjectTasks } from './display-project-tasks.js';
+import  { taskManager } from '../application-logic/todo-manager.js';
+
+
+// Exports to close-edit-window.js
+function refreshAfterEditTask() {
+    const currentDisplayCategory = document.querySelector('.category').innerHTML;
+
+    const projectNames = taskManager.getProjectNames();
+    const isProject = projectNames.some((projectName) => projectName === currentDisplayCategory); 
+
+    if (isProject) displayProjectTasks(currentDisplayCategory);
+
+}
 
 // Exports to add-task.js 
-export function refreshManager(task) {
+function refreshAfterAddTask(task) {
 
     const currentDisplayCategory = document.querySelector('.category').innerHTML;
 
@@ -35,3 +48,5 @@ export function refreshManager(task) {
         return;
     }
 }
+
+export { refreshAfterAddTask, refreshAfterEditTask }
