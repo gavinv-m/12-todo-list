@@ -27,11 +27,22 @@ function createDateContainer(taskObject) {
     dateContainer.appendChild(dateHeading);
 
     const dueDate = document.createElement('h4');
-    let today = new Date(taskObject.day);
-    today = today.toDateString();
-    today = today.split(" ");
+    let taskDueDate = new Date(taskObject.day);
 
-    const text = `${today[0]}, ${today[2]} ${today[1]}`;
+    // Set value attribute on calendar
+    let month = taskDueDate.getMonth() + 1; 
+    if (month < 10) month = '0' + month;
+
+    let day = taskDueDate.getDate();
+    if (day < 10) day = '0' + day;
+
+    calendar.setAttribute('value', `${taskDueDate.getFullYear()}-${month}-${day}`);
+
+    // Set text content
+    taskDueDate = taskDueDate.toDateString();
+    taskDueDate = taskDueDate.split(" ");
+
+    const text = `${taskDueDate[0]}, ${taskDueDate[2]} ${taskDueDate[1]}`;
     dueDate.textContent = text;
     dateContainer.appendChild(dueDate);
 
