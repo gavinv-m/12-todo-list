@@ -61,6 +61,7 @@ function createProjectContainer(taskObject) {
     projectContainer.appendChild(projectHeading);
 
     const select = document.createElement('select');
+    select.setAttribute('id', 'edit-project');
     const selectedProject = taskObject.taskProject;
 
     const projectNames = taskManager.getProjectNames();

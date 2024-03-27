@@ -9,7 +9,8 @@ function verifyUpdateStatus(taskID) {
     const editDateValue = document.getElementById('date-input'); 
     console.log(editDateValue.value); // Correctly retrieving on edit
 
-
+    const editProjectValue = document.getElementById('edit-project');
+    console.log(editProjectValue.value);
 }
 
 
