@@ -108,6 +108,7 @@ function createPriorityContainer(taskObject) {
     const currentPriority = taskObject.priority;
 
     const select = document.createElement('select');
+    select.setAttribute('id', 'edit-priority');
     const firstOption = document.createElement('option');
     firstOption.innerHTML = 'High Priority';
     firstOption.setAttribute('value', 'high');
@@ -156,6 +157,7 @@ export function displayEditDialog(task) {
     // Add task name to form
     const nameOfTask = document.createElement('input');
     nameOfTask.setAttribute('type', 'text');
+    nameOfTask.setAttribute('id', 'edit-task-name');
     nameOfTask.setAttribute('value', taskObject.taskName);
     form.appendChild(nameOfTask);
 
@@ -180,7 +182,8 @@ export function displayEditDialog(task) {
 
     // Append textarea to details container
     const taskDescription = document.createElement('textarea');
-    taskDescription.classList.add('edit-task-description');
+    taskDescription.setAttribute('id', 'edit-task-description');
+    taskDescription.innerHTML = taskObject.taskDescription;
     detailsContainer.appendChild(taskDescription);
 
     form.appendChild(detailsContainer);
