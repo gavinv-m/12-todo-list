@@ -132,12 +132,7 @@ function dueDateCatalog() {
     };
 
 
-    const getNumberOfTasksInDateGroup = () => {
-        
-        let selectedDay = prompt(`Which date group do you wish to see ${Object.keys(numberOfTasksInDateGroup).join(", ")}`);
-        console.log(`${selectedDay}: ${numberOfTasksInDateGroup[selectedDay]}`);
-        return;
-    }
+    const getNumberOfTasksInDateGroup = (dateGroup) => numberOfTasksInDateGroup[dateGroup];
 
 
     const removeTaskFromDateGroup = (taskID) => {
